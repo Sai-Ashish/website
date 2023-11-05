@@ -41,7 +41,135 @@
 
       /* You may want to add additional styles for your <h2> and other elements */
     </style>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 85%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  header {
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+  }
+
+  header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  header ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+  }
+
+  header #branding {
+    float: left;
+  }
+
+  header #branding h1 {
+    margin: 0;
+  }
+
+  header nav {
+    float: right;
+    margin-top: 10px;
+  }
+
+  header .highlight, header .current a {
+    color: #e8491d;
+    font-weight: bold;
+  }
+
+  header a:hover {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .profile-photo {
+    width: 100%;
+    max-width: 250px;
+    margin-top: 50px;
+    border-radius: 50%;
+  }
+
+  @media(max-width: 680px){
+    header #branding,
+    header nav,
+    header nav li,
+    .profile-photo {
+      float: none;
+      text-align: center;
+      width: 100%;
+    }
     
+    header nav li {
+      padding: 5px;
+    }
+  }
+</style>
+
+<style>
+  #navigation-menu a {
+    color: #ffffff; /* This sets the text color to white */
+  }
+
+  #navigation-menu a:visited {
+    color: #cccccc; /* This sets the color of visited links, if you want it to be different */
+  }
+
+  #navigation-menu a:hover {
+    color: #ff0000; /* This sets the text color to red when you hover over the link */
+  }
+
+  /* If your navigation menu needs a specific background color, you can set it like this: */
+  #navigation-menu {
+    background-color: #333333; /* This sets the background color to a dark gray */
+  }
+  </style>
+
+  <style>
+    #credit {
+      position: fixed; /* Fixed positioning relative to the viewport */
+      right: 10px; /* Distance from the right edge of the viewport */
+      bottom: 10px; /* Distance from the bottom edge of the viewport */
+      text-align: right; /* Aligns the text to the right */
+      font-size: 10px; /* Starting font size for the whole credit */
+    }
+
+    .credit-text {
+      /* This styles the 'Template modified from' text */
+      font-size: 0.75em; /* Adjust the size as needed */
+    }
+
+    .credit-link {
+      /* This styles the 'Jon Barron' hyperlink */
+      font-size: 0.75em; /* Adjust the size as needed */
+      color: #999; /* Color for the link */
+      text-decoration: none; /* Removes underline */
+    }
+  </style>
+  
   </head>
 
   <body>
@@ -108,6 +236,8 @@
                   <li><strong>May 2021:</strong> I mentored high school students through the ENLACE program on a project titled 'Deep Learning Algorithms for Disease Segmentation in Chest X-rays,' guiding them from machine learning fundamentals to the complexities of the UNET architecture. Their impressive work is detailed in the  <a href="https://drive.google.com/file/d/1BXpQAvAVtcGq82r0tEdL3a_PtNdbNI2p/view?usp=share_link">final report</a>.</li>
                   <li><strong>November 2020:</strong> I have been elected as the PhD representative for the <a href="https://ecegsc.eng.ucsd.edu/officers/2020-2021">ECE Graduate Student Council</a>.</li>
                   <li><strong>September 2020:</strong> Started my PhD at <a href="https://ucsd.edu">University of California, San Diego</a>.</li>
+                  <li><strong>June 2020:</strong> Graduated from <a href="https://www.iith.ac.in">IIT, Hyderabad</a>.</li>
+                  <li><strong>May 2020:</strong> Academic Excellence Award</a>.</li>
                   <!-- More news items can be added here -->
                 </ul>
               </td>
@@ -223,8 +353,9 @@
         </td>
       </tr>
     </table>
-    <footer>
-      Template modified from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a>.
-    </footer>
+    <footer id="credit">
+      <span class="credit-text">Template modified from</span>
+      <a href="https://github.com/jonbarron/jonbarron_website" class="credit-link">Jon Barron</a>
+    </footer>    
   </body>
 </html>
