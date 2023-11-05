@@ -143,3 +143,26 @@ span.highlight {
   font-weight: bold;
   color: #555;
 }
+
+/* Add your general styles here */
+
+#navigation-menu {
+  list-style: none;
+}
+
+#navigation-menu li {
+  display: inline; /* Display the list items inline */
+  margin-right: 20px; /* Spacing between the items */
+}
+
+#navigation-menu a {
+  text-decoration: none; /* Removes underline from links */
+  color: #000; /* Set link color */
+}
+
+#navigation-menu a:hover {
+  color: #0056b3; /* Color when hovering over link */
+}
+
+/* Add other styles here */
+
