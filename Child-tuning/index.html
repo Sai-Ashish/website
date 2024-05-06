@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Attention-Guided-Weights-Mixup</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/Child_tuning.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jonbarron.info/mipnerf/"/>
+    <meta property="og:title" content="Attention-Guided-Weights-Mixup" />
+    <meta property="og:description" content="Project page for Attention-Guided-Weights-Mixup: Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Attention-Guided-Weights-Mixup" />
+    <meta name="twitter:description" content="Project page for Attention-Guided-Weights-Mixup: Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts." />
+    <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/Child_tuning.png" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                Generalizable and Stable Finetuning<br> of Pretrained Language Models on Low-Resource Texts </br> 
+                <small>
+                    Annual Conference of the North American Chapter of <br> the Association for Computational Linguistics (NAACL), 2024</br> 
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://sai-ashish.github.io/website/">
+                          Sai Ashish Somayajula
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youweiliang.github.io">
+                            Youwei Liang
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?hl=en&user=RRzZk4YAAAAJ&view_op=list_works&sortby=pubdate">
+                            Li Zhang
+                        </a>
+                    </li><br>
+                    <li>
+                        <a href="https://scholar.google.com/citations?hl=en&user=SatULfoAAAAJ&view_op=list_works&sortby=pubdate">
+                          Abhishek Singh
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://pengtaoxie.github.io">
+                          Pengtao Xie
+                        </a>
+                    </li>
+                </br>University of California, San Diego
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/pdf/2403.12918">
+                            <image src="img/mip_paper_image.jpg" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://youtu.be/EpH175PY1A0">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="https://github.com/Sai-Ashish/Attention_guided_weight_mixup_BLO">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <image src="img/Child_tuning.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    Pretrained Language Models (PLMs) have advanced Natural Language Processing (NLP) tasks significantly, but finetuning PLMs on low-resource datasets poses significant challenges such as instability and overfitting. Previous methods tackle these issues by finetuning a strategically chosen subnetwork on a downstream task, while keeping the remaining weights fixed to the pretrained weights. However, they rely on a suboptimal criteria for sub-network selection, leading to suboptimal solutions. To address these limitations, we propose a regularization method based on attention-guided weight mixup for finetuning PLMs. Our approach represents each network weight as a mixup of task-specific weight and pretrained weight, controlled by a learnable attention parameter, providing finer control over sub-network selection. Furthermore, we employ a bi-level optimization (BLO) based framework on two separate splits of the training dataset, improving generalization and combating overfitting. We validate the efficacy of our proposed method through extensive experiments, demonstrating its superiority over previous methods, particularly in the context of finetuning PLMs on low-resource datasets.
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/EpH175PY1A0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Introduction
+                </h3>
+                <p class="text-justify">
+                    Pretraining large language models (PLMs) on vast amounts of unlabeled data, followed by fine-tuning on specific tasks, has greatly advanced natural language processing. However, conventional fine-tuning of PLMs faces challenges. Firstly, it's prone to instability, showing varying performance even with the same settings, especially on small datasets. Additionally, the large capacity of PLMs can lead to overfitting on small datasets, resulting in poor generalization. Thus, adapting PLMs to low-resource tasks while maintaining stability and maximizing generalization remains a significant challenge in NLP.
+                </p>
+                <!-- <p style="text-align:center;">
+                    <image src="img/pe_seq_eqn_pad.png" height="50px" class="img-responsive">
+                </p>
+                <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/pe_anim_horiz.mp4" type="video/mp4" />
+                </video> -->
+                <p class="text-justify">
+                    Prior approaches have effectively addressed challenges in fine-tuning pretrained language models (PLMs) by selectively updating a sub-network while keeping other weights fixed to the pre-trained weights. Strategies such as CHILD-TUNING<sub>D</sub> and DPS dense hold promise, yet they rely on the Fisher Information Matrix (FIM) for sub-network selection, which may not be ideal, particularly in low-resource scenarios where data scarcity can skew FIM calculations. This reliance on FIM could lead to suboptimal performance. Therefore, advocating a departure from FIM-based discrete selection strategies in favor of those that select a child network based on the model's downstream task performance.
+                </p>
+                <p style="text-align:center;">
+                    <image src="img/Motivation.png" height="30px" class="img-responsive">
+                </p>
+                <!-- <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/ipe_anim_horiz.mp4" type="video/mp4" />
+                </video> -->
+                <p class="text-justify">
+                    Introducing the "Attention-guided weight mixup" mechanism, we automatically learn a sub-network and train the downstream model weights. This approach transforms FIM-based discrete child network selection methods into a continuous relaxation, bypassing sub-optimal heuristic-based subnetwork selection. By leveraging bi-level optimization on two training dataset splits, we optimize task weights and attention parameters using gradient descent to enhance performance on downstream tasks.
+                </p>
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Attention Guided Weights Mixup
+                </h3>
+                <p class="text-justify">
+                    Our method employs an attention-guided weight mixup mechanism, where each weight is a linear interpolation of task weights and pretrained weights, controlled by an attention parameter. Thereby, discrete sub-network selection morphs into determining optimal attention parameter that controls the blend of pre-trained and task weights. Specifically, for each weight in a PLM, denoted by W and W<sub>0</sub> for task and pretrained weights respectively, an attention parameter α controls the blend. The resultant weight W<tilde> is computed as a weighted sum of W and W<sub>0</sub>, determined by α:
+                </p>
+                <p style="text-align:center;">
+                    <image src="img/maths.png" class="img-responsive" alt="scales" width="50%">
+                </p>                
+                <p class="text-justify">
+                    Here, o represents element-wise multiplication, and <strong>1</strong> is a matrix with all entries as 1's. α ranging from 0 to 1 allows a flexible transition from discrete to continuous selection, regulating the influence of task and pretrained weights in W<tilde>.</p>
+                </p>
+                <p class="text-justify">
+                    With this formulation, the task weights become dependent on these attention parameters, i.e. the chosen child network. However, in a reciprocal relationship, task weights should be considered while learning the attention parameters. This is because the attention parameters aim to ascertain an optimal blend of pretrained and task weights in the resultant weight computation, engendering a mutual dependency. Thus, to navigate this intricate interdependency, we employ a bi-level optimization (BLO) framework with two stages: 1) task weight finetuning driven by training loss minimization; 2) attention parameter optimization to minimize validation loss, ensuring an optimal balance between task and pretrained weights for improved performance.
+                </p>
+                <p style="text-align:center;">
+                    <image src="img/blo.png" class="img-responsive" alt="scales" width="60%">
+                </p> 
+            </div>
+        </div>
+            
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results
+                </h3>
+                <p class="text-justify">
+                    The major takeaways of the paper are summarized below. For a more comprehensive explanation, please refer to the paper.
+                </p>
+                <!-- <p style="text-align:center;">
+                    <image src="img/maths.png" class="img-responsive" alt="scales" width="50%">
+                </p>                 -->
+                <!-- <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/ship_sbs_path1.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/chair_sbs_path1.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/lego_sbs_path1.mp4" type="video/mp4" />
+                </video>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/mic_sbs_path1.mp4" type="video/mp4" />
+                </video> -->
+                <p class="text-justify">
+                    <strong>Comparison with FIM-based sub-network selection methods on low-resource scenarios</strong>
+                </p>     
+                <p style="text-align:center;">
+                    <image src="img/low-resource-reshape.png" class="img-responsive" alt="scales">
+                </p> 
+                <p class="text-justify">
+                    We compare our method with Vanilla, CHILD-TUNING<sub>D</sub> , and DPS dense method using BERT<sub>LARGE</sub> across 300, 500, and 1000 training data splits. Reported results are the averaged evaluation metrics over all eight GLUE datasets for each training data split. The highest performance in each row is indicated in <strong>bold</strong>. Our outperforms vanilla and prior FIM-based subnetwork selection based methods by a significant margin.
+                </p>
+                <!-- <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="img/lego_radii_manip_slider_200p.mp4" type="video/mp4" />
+                </video> -->
+                <p class="text-justify">
+                    <strong>Comparison with parameter efficient finetuning (PEFT) methods on low-resource scenarios</strong>
+                </p>     
+                <p style="text-align:center;">
+                    <image src="img/peft-reshape-2.png" class="img-responsive" alt="scales" width="80%">
+                </p> 
+                <p class="text-justify">
+                    Averaged performance across the CoLA, RTE, STSB, and MRPC datasets for Vanilla, Prompt Tuning, Prefix-Tuning, LoRA, and our method in low-resource scenarios with 500 and 1000 training instances. We observe that PEFT methods might not always outperform vanilla finetuning under low-resource scenarios. The primary goal of PEFT methods is to produce comparable performance to vanilla finetuning without incurring huge computational demands. However, our method is guaranteed to produce performance improvements under low-resource scenarios.
+                </p>
+                <p class="text-justify">
+                    <strong>Evaluation across various PLMs shows consistently lower performance variability compared to vanilla models</strong>
+                </p>     
+                <p style="text-align:center;">
+                    <image src="img/plms-reshape.png" class="img-responsive" alt="scales">
+                </p> 
+                <p class="text-justify">
+                    Comparison of our method and vanilla finetuning on five popular PLMs. We evaluated the models using ten runs with different random seeds and reported the results in terms of mean and standard deviation. Average score represents the average performance across four datasets, and the best scores are highlighted in bold. The underlined values indicate occurrences of degenerate seeds. We observe a notable gain over vanilla, along with a substantial decrease in the standard deviation.
+                </p>
+                <p class="text-justify">
+                    <strong>Comparison with prior regularization based methods</strong>
+                </p>     
+                <p style="text-align:center;">
+                    <image src="img/regularization.png" class="img-responsive" alt="scales">
+                </p> 
+                <p class="text-justify">
+                    Comparison of our method with prior regularization-based methods on four small datasets (CoLA, RTE, MRPC, STSB), known for causing instability in BERT<sub>LARGE</sub>. The mean and standard deviation (std) of ten random seeds are reported for each method. Bold indicates the best performance. Our method surpasses all other baselines in terms of average scores, with a particularly notable improvement on the CoLA dataset over baselines, illustrating the effectiveness of our approach. Double-sided t-tests were performed between our method and the vanilla method. The p-values are less than 0.05, indicating statistically significant performance improvement over vanilla.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Related links
+                </h3>
+                <p class="text-justify">
+                    <a href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing">Wikipedia</a> provides an excellent introduction to spatial anti-aliasing techniques.
+                </p>
+                <p class="text-justify">
+                    Mipmaps were introduced by Lance Williams in his paper "Pyramidal Parametrics" (<a href="https://software.intel.com/sites/default/files/m/7/2/c/p1-williams.pdf">Williams (1983)</a>).
+                </p>
+                <p class="text-justify">
+                    <a href="https://dl.acm.org/doi/abs/10.1145/964965.808589">Amanatides (1984)</a> first proposed the idea of replacing rays with cones in computer graphics rendering. 
+                </p>
+                <p class="text-justify">
+                    The closely related concept of <em>ray differentials</em> (<a href="https://graphics.stanford.edu/papers/trd/">Igehy (1999)</a>) is used in most modern renderers to antialias textures and other material buffers during ray tracing.
+                </p>
+                <p class="text-justify">
+                    Cone tracing has been used along with prefiltered voxel-based representations of scene geometry for speeding up indirect illumination calculations in <a href="https://research.nvidia.com/sites/default/files/publications/GIVoxels-pg2011-authors.pdf">Crassin et al. (2011)</a>.
+                </p>
+                <p class="text-justify">
+                    Attention-Guided-Weights-Mixup was implemented on top of the <a href="https://github.com/google-research/google-research/tree/master/jaxnerf">JAXNeRF</a> codebase.
+                </p>
+            </div>
+        </div> -->
+        
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{somayajula2024generalizable,
+    title={Generalizable and Stable Finetuning of 
+        Pretrained Language Models on Low-Resource Texts},
+    author={Somayajula, Sai Ashish and Liang, Youwei and 
+        Singh, Abhishek and Zhang, Li and Xie, Pengtao},
+    journal={NAACL},
+    year={2024}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                We thank Professor Taylor Berg for the insightful discussions on the work.
+                    <br>
+                    <br>
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
