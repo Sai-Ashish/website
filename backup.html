@@ -1,0 +1,365 @@
+
+          
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>Research Progress</h2>
+                <!-- <p>
+                  I'm interested in low-resource Natural Language Processing. Under this umbrella, I am exploring data augmentation methods, gradient synthesis of unknown lexical information, stable finetuning methods, and information augmentation. Representative papers are <span class="highlight">highlighted</span>.
+                </p> -->
+              </td>
+            </tr>
+
+          <!-- Section Introduction -->
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <h3>Watermarking in LLMs</h3>
+              <p>
+                With the proliferation of LLMs in generating synthetic datasets, distinguishing between human-curated and machine-generated texts is crucial to avoid misinformation.
+              </p>
+            </td>
+          </tr>
+          
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+            <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+                  <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+                  <!-- Your browser does not support the video tag. -->
+                  <!-- </video></div> -->
+                  <img src='images/wateramark.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function camp_start() {
+                    document.getElementById('camp_image').style.opacity = "1";
+                  }
+        
+                  function camp_stop() {
+                    document.getElementById('camp_image').style.opacity = "0";
+                  }
+                  camp_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/pdf/2402.18059.pdf">
+                  <span class="papertitle">Token-Specific Watermarking with Enhanced Detectability and Semantic Coherence for Large Language Models</span>
+                </a>
+                <br>
+                <a href="https://mignonjia.github.io">Mingjia Huo*</a>,
+                <strong>Sai Ashish Somayajula*</strong>,
+                <a href="https://youweiliang.github.io">Youwei Liang</a>,
+                <a href="https://ruisizhang.com">Ruisi Zhang</a>,
+                <a href="https://farinaz.eng.ucsd.edu">Farinaz Koushanfar</a>,
+                <a href="https://pengtaoxie.github.io">Pengtao Xie</a>
+                <!-- <br> -->
+                <!-- <em>arXiv</em> -->
+                <br>
+                <em>International Conference on Machine Learning (ICML), 2024</em>
+                <br>
+                <a href="https://arxiv.org/pdf/2402.18059.pdf">pdf</a>
+                /
+                <a href="https://github.com/mignonjia/TS_watermark">code</a>
+                <p></p>
+                <p>
+                  A multi-objective optimization based token-specific watermarking method to study and improve both watermark detectability and generation quality.
+                </p>
+              </td>
+            </tr>
+
+            <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+                  <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+                  <!-- Your browser does not support the video tag. -->
+                  <!-- </video></div> -->
+                  <img src='images/CN2.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function camp_start() {
+                    document.getElementById('camp_image').style.opacity = "1";
+                  }
+        
+                  function camp_stop() {
+                    document.getElementById('camp_image').style.opacity = "0";
+                  }
+                  camp_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="Child-tuning/index.html">
+                  <span class="papertitle">Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts</span>
+                </a>
+                <br>
+                <strong>Sai Ashish Somayajula</strong>,
+                <a href="https://youweiliang.github.io">Youwei Liang</a>,
+                <a href="https://scholar.google.com/citations?hl=en&user=RRzZk4YAAAAJ&view_op=list_works&sortby=pubdate">Li Zhang</a>,
+                <a href="https://scholar.google.com/citations?hl=en&user=SatULfoAAAAJ&view_op=list_works&sortby=pubdate">Abhishek Singh</a>,
+                <a href="https://pengtaoxie.github.io">Pengtao Xie</a>
+                <br>
+                <em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em>
+                <!-- <br> -->
+                <!-- /
+                <a href="https://anonymous.4open.science/r/AutoLoRA/README.md">code</a> -->
+                <br>
+                <a href="https://arxiv.org/pdf/2403.12918">pdf</a>
+                /
+                <a href="https://github.com/Sai-Ashish/Attention_guided_weight_mixup_BLO">code</a>
+                <p></p>
+                <p>
+                  A bi-level optimization-based approach to finetune an automatically chosen sub-network within pre-trained language models on low-resource datasets to mitigate overfitting and reduce standard deviation.
+                </p>
+              </td>
+            </tr>
+        
+            <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+                  <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+                  <!-- Your browser does not support the video tag. -->
+                  <!-- </video></div> -->
+                  <img src='images/Autolora.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function camp_start() {
+                    document.getElementById('camp_image').style.opacity = "1";
+                  }
+        
+                  function camp_stop() {
+                    document.getElementById('camp_image').style.opacity = "0";
+                  }
+                  camp_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://ruz048.github.io/autolora-website/">
+                  <span class="papertitle">AutoLoRA: Automatically Tuning Matrix Ranks in Low-Rank Adaptation Based on Meta Learning</span>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?hl=en&user=D7EXgU0AAAAJ&view_op=list_works&sortby=pubdate">Ruiyi Zhang</a>,
+                <a href="https://tongclass.ac.cn/author/rushi-qiang/">Rushi Qiang</a>,
+                <strong>Sai Ashish Somayajula</strong>,
+                <a href="https://pengtaoxie.github.io">Pengtao Xie</a>
+                <br>
+                <em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em>
+                <br>
+                <a href="https://arxiv.org/pdf/2403.09113">pdf</a>
+                /
+                <a href="https://github.com/ruz048/AutoLoRA">code</a>
+                <p></p>
+                <p>
+                  AutoLoRA, a meta-learning framework designed to automatically determine the optimal rank for each low-rank adaptation (LoRA) matrix while parameter efficient finetuning.
+                </p>
+              </td>
+            </tr>
+
+            <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+                  <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+                  <!-- Your browser does not support the video tag.
+                  </video></div> -->
+                  <img src='images/covid-19.jpg' width="160">
+                </div>
+                <script type="text/javascript">
+                  function camp_start() {
+                    document.getElementById('camp_image').style.opacity = "1";
+                  }
+      
+                  function camp_stop() {
+                    document.getElementById('camp_image').style.opacity = "0";
+                  }
+                  camp_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://www.nature.com/articles/s41598-023-48594-4">
+                  <span class="papertitle">Improving Long COVID-Related Text Classification: A Novel End-to-End Domain-Adaptive Paraphrasing Framework</span>
+                </a>
+                <br>
+                <strong>Sai Ashish Somayajula</strong>,
+                <a href="https://scholar.google.com/citations?user=19OfMHYAAAAJ&hl=en">Onkar Litake</a>,
+                <a href="https://youweiliang.github.io">Youwei Liang</a>,
+                <a href="https://scholar.google.com/citations?hl=en&user=zoq2p34AAAAJ">Ramtin Hosseini</a>,
+                <a href="https://www.nematilab.info/people/shamim/index.html">Shamim Nemati</a>,
+                <a href="https://profiles.dom.pitt.edu/paccm/faculty_info.aspx/Wilson5159">David O. Wilson</a>,
+                <a href="https://shileyeye.ucsd.edu/faculty/robert-weinreb">Robert N. Weinreb</a>,
+                <a href="https://providers.ucsd.edu/details/22362/sleep-medicine-pulmonology-(lung)">Atul Malhotra</a>,
+                <a href="https://pengtaoxie.github.io">Pengtao Xie</a>
+                <br>
+                <em>Scientific Reports. Nature Portfolio</em>, 2024
+                <br>
+                <!-- <a href="https://aclanthology.org/2023.findings-acl.544.pdf">pdf</a>
+                /
+                <a href="https://github.com/Sai-Ashish/BFTSS">code</a> -->
+                <p></p>
+                <p>
+                  Introduce medical paraphrasing to augment data, coupled with a feedback mechanism. This approach utilizes a data-reweighting-based multi-level optimization framework with a meta-weight-network to enhance the classification performance of long COVID literature.
+                  <!-- This work presents a novel machine learning approach to classify long COVID literature, addressing the challenges of a rapidly evolving field and scarce annotated data. It introduces medical paraphrasing to diversify training data and a Data-Reweighting-Based Multi-Level Optimization Framework with a Meta-Weight-Network, enhancing accuracy and efficiency in classifying long COVID literature. -->
+                </p>
+              </td>
+            </tr>
+
+      <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+            <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+            <!-- Your browser does not support the video tag. -->
+            <!-- </video></div> -->
+            <img src='images/gs.png' width="160">
+          </div>
+          <script type="text/javascript">
+            function camp_start() {
+              document.getElementById('camp_image').style.opacity = "1";
+            }
+
+            function camp_stop() {
+              document.getElementById('camp_image').style.opacity = "0";
+            }
+            camp_stop()
+          </script>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://aclanthology.org/2023.findings-acl.544/#:~:text=In%20this%20paper%2C%20we%20propose,from%20the%20training%20data%20only.">
+            <span class="papertitle">Bi-level Finetuning with Task-dependent Similarity Structure for Low-resource Training</span>
+          </a>
+          <br>
+          <strong>Sai Ashish Somayajula</strong>,
+          <a href="https://lifengjin.github.io">Lifeng Jin</a>,
+          <a href="https://freesunshine0316.github.io">Linfeng Song</a>,
+          <a href="https://scholar.google.com.sg/citations?user=G3OMbFSm858C&hl=en">Haitao Mi</a>,
+          <a href="https://sites.google.com/view/dongyu888/">Dong Yu</a>
+          <br>
+          <em>Findings of the Association for Computational Linguistics (ACL), 2023</em>
+          <br>
+          <a href="https://aclanthology.org/2023.findings-acl.544.pdf">pdf</a>
+          /
+          <a href="https://github.com/Sai-Ashish/BFTSS">code</a>
+          <p></p>
+          <p>
+            A bi-level optimization approach to synthesize gradients of unknown lexical information from known data, leveraging a task-dependent similarity matrix.
+          </p>
+        </td>
+      </tr>
+
+      <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <!-- <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop> -->
+            <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+            <!-- Your browser does not support the video tag. -->
+            <!-- </video></div> -->
+            <img src='images/data_augmentation.png' width="160">
+          </div>
+          <script type="text/javascript">
+            function camp_start() {
+              document.getElementById('camp_image').style.opacity = "1";
+            }
+
+            function camp_stop() {
+              document.getElementById('camp_image').style.opacity = "0";
+            }
+            camp_stop()
+          </script>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00464/110434/A-Multi-Level-Optimization-Framework-for-End-to">
+            <span class="papertitle">A Multi-Level Optimization Framework for End-to-End Text Augmentation
+          </a>
+          <br>
+          <strong>Sai Ashish Somayajula</strong>,
+          <a href="https://freesunshine0316.github.io">Linfeng Song</a>,
+          <a href="https://pengtaoxie.github.io">Pengtao Xie</a>
+          <br>
+          <em>Transactions of the Association for Computational Linguistics (TACL), 2022</em>
+          <br>
+          <a href="https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00464/2006965/tacl_a_00464.pdf">pdf</a>
+          /
+          <a href="https://github.com/Sai-Ashish/End-to-End-Text-Augmentation">code</a>
+          /
+          <a href="https://underline.io/events/325/sessions/11394/lecture/54127-a-multi-level-optimization-framework-for-end-to-end-text-augmentation">video</a>
+          <p></p>
+          <p>
+            A data reweighting based domain adaptive feedback mechanism for end-to-end learning of text augmentation and classification models, overcoming traditional data augmentation limitations.
+          </p>
+        </td>
+      </tr>
+    
+  <!-- </tr>
+  </tbody></table>
+  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+      <td style="padding:20px;width:100%;vertical-align:middle">
+        <h2>Previous Publications</h2>
+      </td>
+    </tr>
+  </tbody></table>
+  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+    <tr onmouseout="camp_stop()" onmouseover="camp_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='camp_image'><video  width=100% height=100% muted autoplay loop>
+          <source src="images/camp.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/dual_image.jpeg' width="160">
+        </div>
+        <script type="text/javascript">
+          function camp_start() {
+            document.getElementById('camp_image').style.opacity = "1";
+          }
+
+          function camp_stop() {
+            document.getElementById('camp_image').style.opacity = "0";
+          }
+          camp_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://arxiv.org/pdf/1911.08135.pdf">
+          <span class="papertitle">Investigating the relationship between graph eigenvector ordering and the signal processing dual</span>
+        </a>
+        <br>
+        <a href="https://scholar.google.com/citations?user=5gbbMisAAAAJ&hl=en">Batreddy Subba Reddy</a>,
+        <strong>Sai Ashish Somayajula</strong>,
+        <a href="https://people.iith.ac.in/staditya/">Aditya Siripuram</a>
+        <br>
+        <em>arXiv</em>, 2019
+        <br>
+        <a href="https://arxiv.org/pdf/1911.08135.pdf">pdf</a>
+        <p></p>
+        <p>
+          We propose a dualness measure of two graphs, which quantifies how close the graphs are being (signal processing) duals of each other. We further develop an algorithm based on coordinate descent and perfect matching to compute an approximation to dualness.
+        </p>
+      </td>
+    </tr> -->
+
+
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:right;font-size:small;">
+                  <p>I dedicate the knowledge I gain for the betterment of this society. My gratitude to the higher power that guides me on the right path!</p>
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+    <footer id="credit">
+      <span class="credit-text">Template modified from</span>
+      <a href="https://github.com/jonbarron/jonbarron_website" class="credit-link">Jon Barron</a>
+    </footer>    
+  </body>
+</html>
