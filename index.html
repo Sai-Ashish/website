@@ -52,9 +52,26 @@
   }
 
   .container {
-    width: 85%;
+    width: 95%; /* Increase the width to 95% */
+    max-width: 1400px; /* Set a maximum width if needed */
     margin: auto;
     overflow: hidden;
+  }
+
+  .text-content {
+    flex: 1;
+    padding: 20px;
+    max-width: 1000px; /* Increase max-width */
+  }
+
+  .table, .td {
+    width: 100%; /* Ensure table and cells take the full width of its parent */
+    max-width: 100%; /* Remove any max-width constraint */
+    border: 0px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   header {
@@ -204,7 +221,7 @@
       </nav>
     </header>
 
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <table style="width:100%;max-width:1400px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -234,7 +251,7 @@
 
               </td>
               <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="images/SSA_image.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/SSA_image.jpg" class="hoverZoomLink"></a>
+                <a href="images/SSA_image.jpg"><img style="width:70%;max-width:70%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/SSA_image.jpg" class="hoverZoomLink"></a>
               </td>
             </tr>
 
@@ -331,9 +348,9 @@
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/wateramark.png' width="160">
-                  </div>
+                  <div style="text-align: center;">
+                    <img src='images/wateramark.png' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div> 
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
@@ -388,10 +405,10 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/CN2.png' width="160">
-                  </div>
+                <td style="padding:20px;width:25%;vertical-align:top">
+                  <div style="text-align: center;">
+                    <img src='images/CN2.png' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div> 
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
@@ -445,10 +462,10 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/Autolora.png' width="160">
-                  </div>
+                <td style="padding:20px;width:25%;vertical-align:top">
+                  <div style="text-align: center;">
+                    <img src='images/Autolora.png' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div> 
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
@@ -503,9 +520,9 @@
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/covid-19.jpg' width="160">
-                  </div>
+                  <div style="text-align: center;">
+                    <img src='images/covid-19.jpg' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div>                
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
@@ -552,9 +569,9 @@
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/gs.png' width="160">
-                  </div>
+                  <div style="text-align: center;">
+                    <img src='images/bftss.png' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div>  
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
@@ -595,9 +612,9 @@
             <tbody>
               <tr onmouseout="camp_stop()" onmouseover="camp_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img src='images/gs.png' width="160">
-                  </div>
+                  <div style="text-align: center;">
+                    <img src='images/paper1.png' style="width: 100%; max-width: 500px; object-fit: cover;">
+                  </div>  
                   <script type="text/javascript">
                     function camp_start() {
                       document.getElementById('camp_image').style.opacity = "1";
