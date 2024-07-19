@@ -203,10 +203,10 @@
                     <image src="img/Delta and gamma network.png" class="img-responsive" alt="scales" width="100%">
                 </p>                
                 <p class="text-justify">
-                    We utilize the embeddings of the previous token to generate &gamma;<sub>t</sub> for the current time step, which helps in splitting the vocabulary into red and green list tokens. Each token v in the vocabulary V is sampled from a Bernoulli distribution parameterized by &gamma;<sub>t</sub>. If y<sub>v</sub><sup>(t)</sup> = 1, the token v is assigned to the green list; otherwise, it is assigned to the red list. To make this sampling process differentiable and optimize the training efficiently, we apply the Gumbel softmax trick.</p>
+                    We utilize the embeddings of the previous token to generate &gamma;<sub>t</sub> for the current time step, which helps in splitting the vocabulary into red and green list tokens. For each token v in the vocabulary V, y<sub>v</sub><sup>(t)</sup> is sampled from a Bernoulli distribution parameterized by &gamma;<sub>t</sub>. If y<sub>v</sub><sup>(t)</sup> = 1, the token v is assigned to the green list; otherwise, it is assigned to the red list. To make this sampling process differentiable, we apply the Gumbel softmax trick.</p>
                 </p>
                 <p class="text-justify">
-                    Given original logits <i>l<sub>v</sub><sup>(t)</sup></i> for token <i>v</i>, modified logits after biasing the green-list tokens are l<sub>v</sub><sup>(t)</sup> + y<sub>v</sub><sup>(t)</sup> * &delta;<sub>t</sub>
+                    Given original logits <i>l<sub>v</sub><sup>(t)</sup></i> for token <i>v</i>, modified logits after biasing the green-list tokens are, l<sub>v</sub><sup>(t)</sup> + y<sub>v</sub><sup>(t)</sup> * &delta;<sub>t</sub>
                 </p>
                 <p class="text-justify">
                     The following training objectives are used, 
