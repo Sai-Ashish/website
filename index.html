@@ -252,11 +252,40 @@
                   </span>
                 </p>                
 
-              </td>
-              <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="./images/SSA_image.jpg"><img style="width:70%;max-width:70%;object-fit: cover; border-radius: 70%;" alt="profile photo" src="./images/SSA_image.jpg" class="hoverZoomLink"></a>
-              </td>
-            </tr>
+            <!-- Example HTML using a table cell -->
+            <td 
+            style="
+              padding: 2.5%; 
+              width: 40%; 
+              max-width: 40%; 
+              text-align: center;
+            "
+          >
+            <a href="./images/SS.JPG">
+              <img 
+                src="./images/SS.JPG" 
+                alt="profile photo" 
+                style="
+                  /* Fix the container dimensions to force cropping */
+                  width: 350px;      /* adjust as you like */
+                  height: 450px;     /* adjust as you like */
+
+                  /* Crop and center the important part (your face) */
+                  object-fit: cover; 
+                  object-position: 40% 110%; /* shift upward to reduce sky; try 50% 25%, etc. */
+
+                  /*
+                    Create an oval shape:
+                    'border-radius: 50% / 60%' means 
+                    horizontally (X-axis) 50% radius, 
+                    vertically (Y-axis) 60% radius.
+                    Try adjusting to get the exact oval shape you prefer.
+                  */
+                  border-radius: 60% / 60%; 
+                "
+              >
+            </a>
+          </td>          
 
             <table style="width:100%; border:0px; border-spacing:0px; border-collapse:separate; margin-right:auto; margin-left:auto;">
               <tbody> 
