@@ -283,7 +283,7 @@ img {
   width: 320px;
   height: 400px;
   object-fit: cover;
-  object-position: 40% 100%;
+  object-position: center center;
   border-radius: 60% / 58%;
   border: 1px solid var(--line);
 }
@@ -455,8 +455,25 @@ img {
   padding: 0 0 14px;
 }
 
+.timeline-meta,
+.timeline-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .timeline-title {
   font-weight: 700;
+}
+
+.timeline-date {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.timeline-note {
+  color: var(--muted);
 }
 
 .site-footer {
