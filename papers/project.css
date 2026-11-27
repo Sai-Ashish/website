@@ -13,17 +13,6 @@
   color: var(--text);
 }
 
-.publication-site.soma {
-  --paper: #fbfcff;
-  --text: #242734;
-  --secondary: #535d70;
-  --rule: #d7dce5;
-  --deep: #283550;
-  --accent-ink: #344e87;
-  --tint: #e9eef9;
-  --highlight: #b6ccff;
-}
-
 .publication-site .site-header {
   background: var(--paper);
   border-bottom: 1px solid var(--rule);
@@ -276,7 +265,7 @@
 
 .sample-sales :is(th, td) {
   padding: 3px 8px 3px 0;
-  border-bottom: 1px solid #586881;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 15px;
 }
 
