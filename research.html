@@ -26,8 +26,8 @@
     <main class="content-shell">
       <section class="page-heading research-intro">
         <p class="eyebrow">Research</p>
-        <h1>From domain knowledge to data-driven discovery</h1>
-        <p class="research-lead">My long-term vision is to build <strong>data agents that help people turn complex data into reliable insights and scientific discoveries</strong>. This connects my PhD work on adapting language models for healthcare with my enterprise AI research at Oracle: giving models the domain knowledge, data access, and reasoning abilities needed to support expert inquiry.</p>
+        <h1>Data agents for insights and discovery</h1>
+        <p class="research-lead">My long-term vision is to build <strong>data agents that help people turn complex data into reliable insights and scientific discoveries</strong>.</p>
         <nav class="research-nav" aria-label="Research page sections">
           <a href="#motivation">COVID-19 motivation</a>
           <a href="#phd">PhD foundations</a>
@@ -46,7 +46,7 @@
       <section class="section-block research-story" id="phd">
         <p class="eyebrow">PhD · UC San Diego</p>
         <h2>Building language models for specialized domains</h2>
-        <p>Working with <a href="https://pengtaoxie.github.io">Prof. Pengtao Xie</a> at <a href="https://ucsd.edu">UC San Diego</a>, I studied how to adapt pre-trained language models to healthcare and biology through synthetic data generation, continual learning, efficient fine-tuning, and watermarking. My research addressed three connected needs:</p>
+        <p>Working with <a href="https://pengtaoxie.github.io">Prof. Pengtao Xie</a> at <a href="https://ucsd.edu">UC San Diego</a>, I studied how to adapt pre-trained language models to healthcare and biology through synthetic data generation, continual learning, efficient fine-tuning, and watermarking. My research explored three areas:</p>
         <ul class="research-themes">
           <li><strong>Learn from limited evidence.</strong> Use feedback from downstream tasks to improve synthetic training data, including for Long COVID text classification.</li>
           <li><strong>Adapt efficiently and reliably.</strong> Develop optimization methods for stable fine-tuning on low-resource texts and learn how much adaptation capacity a task needs.</li>
@@ -57,27 +57,26 @@
 
       <section class="section-block research-story" id="data-agents">
         <p class="eyebrow">Enterprise AI · Oracle</p>
-        <h2>From adapted models to agents that investigate data</h2>
-        <p>This work led me to a broader systems question: how can a language model use domain knowledge to investigate data and produce an answer supported by evidence? Adapting the model is one part of that goal. An agent also needs to understand what the data means, retrieve the right information, and check its reasoning against the underlying data.</p>
-        <p>At Oracle, I pursued this direction in an enterprise setting, working with product and engineering teams on <strong>data agents for analytics and insight generation</strong>. Enterprise data brings many of the same challenges that motivate scientific data analysis: specialized terminology, ambiguous questions, complex relationships, and a need for dependable answers.</p>
+        <h2>Data agents for enterprise analytics</h2>
+        <p>At Oracle, I worked with product and engineering teams on <strong>data agents for analytics and insight generation</strong>. The research focuses on understanding domain context, querying complex datasets, and checking answers against the underlying data.</p>
         <h3>Grounding questions in domain meaning</h3>
         <p>My work includes an ontology-driven semantic store that connects entities, metrics, relationships, and domain rules to enterprise data. This gives an agent context for interpreting a question and translating the user’s intent into an analysis.</p>
         <h3>Turning intent into evidence through NL2SQL</h3>
         <p>Reliable data access is a foundation for insight. I co-led <strong>OraPlan-SQL</strong>, winner of the <a href="https://sig4kg.github.io/archer-bench/">2025 Archer NL2SQL Challenge</a>, and <strong>SOMA-SQL</strong>, which <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">reached #1 on Spider 2.0 Lite in April 2026</a>. These efforts address how agents interpret questions, plan queries, and use execution feedback to resolve ambiguity in enterprise data.</p>
         <h3>Toward insights and discovery</h3>
-        <p>The larger goal is an agent that can follow a question through an investigation: gather evidence, examine patterns, test possible explanations, and help a person decide what to explore next. My enterprise work develops foundations for that vision. Bringing such capabilities to scientific data remains the long-term motivation that connects this work to the healthcare questions that first drew me to research.</p>
+        <p>I am interested in agents that can take an investigation further: examine patterns, test possible explanations, and suggest useful follow-up questions, with evidence people can inspect.</p>
       </section>
 
       <section class="section-block research-story" id="publications">
-        <p class="eyebrow">Methods behind the vision</p>
+        <p class="eyebrow">Publications</p>
         <h2>Selected PhD publications</h2>
-        <p>These papers develop the data generation, adaptation, and attribution methods behind my work on specialized language models, beginning with the healthcare application that motivated it.</p>
+        <p>Selected work on data generation, adaptation, and attribution for specialized language models.</p>
       </section>
 
       <section class="section-block research-publications">
         <h3>Learning from scarce data</h3>
         <p>
-          The Long COVID study connects my original motivation to a concrete task: classifying biomedical text with limited labels. Related work uses downstream feedback to improve text augmentation and task-dependent structure to synthesize gradients for unseen lexical information.
+          The Long COVID study explores biomedical text classification with limited labels. Related work uses downstream feedback to improve text augmentation and task-dependent structure to synthesize gradients for unseen lexical information.
         </p>
 
         <article class="paper-entry">
