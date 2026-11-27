@@ -774,6 +774,61 @@ h2[id] {
   font-size: inherit;
 }
 
+.benchmark-size dl {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  margin: 0;
+  padding: 20px 0;
+  border-top: 2px solid #343b58;
+  border-bottom: 1px solid var(--line);
+}
+
+.benchmark-size dl > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.benchmark-size dl > div + div {
+  padding-inline-start: 20px;
+  border-inline-start: 1px solid var(--line);
+}
+
+.benchmark-size dt {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.benchmark-size dd {
+  margin: 0;
+  color: var(--ink);
+  font: 400 clamp(30px, 4vw, 44px)/1.1 Georgia, serif;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.benchmark-size dl > div:first-child dd {
+  color: #343b58;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .benchmark-size dl {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+  }
+
+  .benchmark-size dl > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .benchmark-size dl > div:nth-child(2) {
+    padding-inline-start: 0;
+    border: 0;
+  }
+}
+
 .sql-citation .authors {
   margin-bottom: 4px;
 }

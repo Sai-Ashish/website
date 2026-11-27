@@ -55,10 +55,17 @@
         <p>Imagine last year’s best seller sold nothing this month. If it appears at the top of this month’s report after the stock warning is added, the latest revision has broken the date filter. The procedure might still compile and display a warning. Running it on a case like this exposes the error.</p>
       </section>
 
-      <section class="section-block">
+      <section class="section-block" id="benchmark-testing">
         <h2>Testing the behavior after each request</h2>
         <p>PLSQLBench compiles and executes the generated programs against database tests. A multi-turn conversation asks whether the model can carry earlier requirements forward as it revises the same program. Across the benchmark, errors included references to the wrong schema objects, mishandled exceptions, and revisions that lost earlier behavior.</p>
-        <p>The benchmark includes 2,594 single-turn tasks and 271 conversations spanning 978 turns. <a href="https://aclanthology.org/2026.emnlp-industry.155/">PLSQLBench paper and dataset description</a>.</p>
+        <figure class="benchmark-size">
+          <dl>
+            <div><dt>Total benchmark instances</dt><dd>2,865</dd></div>
+            <div><dt>Single-turn tasks</dt><dd>2,594</dd></div>
+            <div><dt>Multi-turn conversations</dt><dd>271</dd></div>
+          </dl>
+          <figcaption>The conversations span 978 turns. <a href="https://aclanthology.org/2026.emnlp-industry.155/">Dataset description in the paper</a>.</figcaption>
+        </figure>
       </section>
 
       <section class="section-block sql-citation">
