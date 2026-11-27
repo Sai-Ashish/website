@@ -36,9 +36,13 @@
         </nav>
       </header>
 
-      <section class="section-block">
+      <section class="section-block" id="product-report">
         <h2>A best-seller report that keeps changing</h2>
         <p>In my UC San Diego talk, the example is a procedure that reports the best-selling products. The user starts with a simple ranking and adds requirements as the conversation progresses.</p>
+        <figure>
+          <img src="../images/sql/plsqlbench-report.jpg" width="1536" height="1024" alt="Three illustrated report sheets show a sales ranking, a calendar date range, and a low-stock warning. Each revision carries a test checkmark.">
+          <figcaption>Three revisions to the same report. <a href="https://arxiv.org/html/2608.15931v1#S0.F1">Figure 1 in the paper</a> shows the request and test for each turn.</figcaption>
+        </figure>
         <table>
           <caption>Three requests for the same product report</caption>
           <thead><tr><th scope="col">Request</th><th scope="col">What a working revision must do</th></tr></thead>
@@ -54,10 +58,7 @@
       <section class="section-block">
         <h2>Testing the behavior after each request</h2>
         <p>PLSQLBench compiles and executes the generated programs against database tests. A multi-turn conversation asks whether the model can carry earlier requirements forward as it revises the same program. Across the benchmark, errors included references to the wrong schema objects, mishandled exceptions, and revisions that lost earlier behavior.</p>
-        <figure>
-          <img src="../images/sql/plsqlbench.png" width="800" height="480" loading="lazy" alt="The benchmark includes 2,594 single-turn tasks and 271 multi-turn conversations, totaling 2,865 instances.">
-          <figcaption>The 271 conversations span 978 turns. <a href="https://aclanthology.org/2026.emnlp-industry.155/">PLSQLBench paper and dataset description</a>.</figcaption>
-        </figure>
+        <p>The benchmark includes 2,594 single-turn tasks and 271 conversations spanning 978 turns. <a href="https://aclanthology.org/2026.emnlp-industry.155/">PLSQLBench paper and dataset description</a>.</p>
       </section>
 
       <section class="section-block sql-citation">
