@@ -36,44 +36,52 @@
           <a class="primary-resource" href="https://arxiv.org/abs/2606.11424">Paper</a>
           <a href="https://arxiv.org/pdf/2606.11424">PDF</a>
           <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle article</a>
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=32">UCSD slides</a>
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1514">Talk video</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=43">UCSD slides</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=2013">Talk video</a>
         </nav>
       </header>
 
       <figure class="example-plate" id="example" aria-labelledby="example-heading">
         <div class="example-spread">
           <div class="example-question">
-            <p class="figure-label">A question from the paper</p>
-            <h2 id="example-heading">Which regions in New York performed best last quarter?</h2>
-            <p>Suppose “best” means revenue and the business uses fiscal quarters. One choice is still open. Change the meaning of New York and see which region leads.</p>
+            <p class="figure-label">A database probe</p>
+            <h2 id="example-heading">Which cities recorded sales in New York State?</h2>
+            <table class="sample-sales">
+              <caption>Three sample sales records</caption>
+              <thead><tr><th scope="col">City</th><th scope="col">State code</th></tr></thead>
+              <tbody>
+                <tr><td>Albany</td><td><code>NY</code></td></tr>
+                <tr><td>Buffalo</td><td><code>NY</code></td></tr>
+                <tr><td>Oakland</td><td><code>CA</code></td></tr>
+              </tbody>
+            </table>
           </div>
           <fieldset class="experiment">
-            <legend>Interpret “New York” as</legend>
+            <legend>Choose a value for the state filter</legend>
+            <p class="output-title">Try a value for the state filter</p>
             <input class="choice choice-first" type="radio" name="scenario" id="first" checked>
-            <label for="first">New York City</label>
+            <label for="first"><code>'New York'</code></label>
             <input class="choice choice-second" type="radio" name="scenario" id="second">
-            <label for="second">New York State</label>
+            <label for="second"><code>'NY'</code></label>
             <div class="snapshot snapshot-1">
-              <p class="output-title">Revenue in the fiscal quarter</p>
-              <ul class="plot-rows" aria-label="City">
-                <li><div class="plot-label"><span>Manhattan</span><span>$80k</span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
-                <li><div class="plot-label"><span>Brooklyn</span><span>$55k</span></div><span class="track" aria-hidden="true"><i style="--extent: 46%"></i></span></li>
-              </ul>
-              <p class="plot-finding">Manhattan leads among the two city regions.</p>
+              <pre class="sample-query"><code>SELECT DISTINCT city
+FROM sales
+WHERE state_code = 'New York'
+ORDER BY city</code></pre>
+              <p class="match-count">0 matching cities</p>
+              <p class="plot-finding">The query runs, but none of the three records stores the full state name.</p>
             </div>
             <div class="snapshot snapshot-2">
-              <p class="output-title">Revenue in the fiscal quarter</p>
-              <ul class="plot-rows" aria-label="State">
-                <li><div class="plot-label"><span>Albany</span><span>$120k</span></div><span class="track" aria-hidden="true"><i style="--extent: 100%"></i></span></li>
-                <li><div class="plot-label"><span>Manhattan</span><span>$80k</span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
-                <li><div class="plot-label"><span>Brooklyn</span><span>$55k</span></div><span class="track" aria-hidden="true"><i style="--extent: 46%"></i></span></li>
-              </ul>
-              <p class="plot-finding">Including Albany changes the winner, even though the revenue calculation is identical.</p>
+              <pre class="sample-query"><code>SELECT DISTINCT city
+FROM sales
+WHERE state_code = 'NY'
+ORDER BY city</code></pre>
+              <p class="match-count">2 matching cities</p>
+              <p class="plot-finding"><strong>Albany and Buffalo</strong> both have the stored code <code>NY</code>. Oakland is excluded because its code is <code>CA</code>.</p>
             </div>
           </fieldset>
         </div>
-        <figcaption>Fictional sales totals illustrate the city-versus-state ambiguity in the paper.</figcaption>
+        <figcaption>Fictional sales records illustrate how a database probe settles a disagreement about a stored value.</figcaption>
       </figure>
 
       <div class="article-body">
@@ -92,7 +100,7 @@
             <p>First we look for choices that change the SQL. One candidate interprets New York as a city, another as a state. A third might count deals instead of summing revenue. Comparing the candidates exposes disagreements that a syntax check would miss.</p>
             <p>An earlier query can preserve a business decision even if its original question is gone. If it sums revenue by state for a fiscal quarter, we know how that particular request was interpreted. We generate a shorter question that omits those details, then save the choices it leaves open and the answers supported by the earlier SQL. A later query can retrieve that example when its context fits.</p>
             <p>Even “first purchase” can hide a choice. Suppose a visitor bought something on a phone in the morning and on a laptop that evening. Both devices appear on the first purchase date. A clarification that specifies the earliest session tells the query to order by timestamp and return the phone. <a href="https://arxiv.org/html/2606.11424v1#A8">Examples of clarification questions in Appendix H</a>.</p>
-            <p>Some choices can be checked directly. If two queries agree on New York State but disagree about its spelling, a small query can inspect the values in the state column. That check can repair a filter such as <code>'New York'</code> to <code>'NY'</code>. Deciding whether the user meant the state in the first place requires different evidence.</p>
+            <p>For the example above, the user has already specified the state. SOMA-SQL can check the remaining assumption with <code>SELECT DISTINCT state_code FROM sales</code>. The sample records return <code>CA</code> and <code>NY</code>. Seeing the stored values explains the empty result and gives the agent an exact filter to use.</p>
             <figure class="paper-figure">
               <a href="../images/sql/soma-method.jpg" aria-label="Open the full-size SOMA-SQL method figure"><img src="../images/sql/soma-method.jpg" width="1024" height="751" loading="lazy" alt="SOMA-SQL builds clarification examples from earlier queries, compares multiple candidate queries, probes the database, and repairs a candidate using the evidence."></a>
               <figcaption>How a stored clarification and a live database check reach the final query. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Figure 2 in Oracle’s article</a>.</figcaption>
