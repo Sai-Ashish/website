@@ -93,13 +93,13 @@ ORDER BY city</code></pre>
         <div class="article-copy">
           <section id="overview">
             <h2>Overview</h2>
-            <p class="overview-text">A question can have several plausible SQL answers. SOMA-SQL compares their assumptions, retrieves relevant decisions from earlier queries, and runs small database checks to decide which parts of a candidate query to revise.</p>
+            <p class="overview-text">A question can have several plausible SQL interpretations. SOMA-SQL compares candidate queries, retrieves synthetic clarification records derived from SQL, and runs targeted database probes to guide final SQL selection and repair.</p>
           </section>
           <section id="method">
             <h2>Where the evidence comes from</h2>
             <p>First we look for choices that change the SQL. One candidate interprets New York as a city, another as a state. A third might count deals instead of summing revenue. Comparing the candidates exposes disagreements that a syntax check would miss.</p>
-            <p>An earlier query can preserve a business decision even if its original question is gone. If it sums revenue by state for a fiscal quarter, we know how that particular request was interpreted. We generate a shorter question that omits those details, then save the choices it leaves open and the answers supported by the earlier SQL. A later query can retrieve that example when its context fits.</p>
-            <p>Even “first purchase” can hide a choice. Suppose a visitor bought something on a phone in the morning and on a laptop that evening. Both devices appear on the first purchase date. A clarification that specifies the earliest session tells the query to order by timestamp and return the phone. <a href="https://arxiv.org/html/2606.11424v1#A8">Examples of clarification questions in Appendix H</a>.</p>
+            <p>SOMA-SQL constructs synthetic clarification records from SQL without paired natural-language questions. It generates detailed questions, creates ambiguous versions by omitting details, and derives clarification questions and answers using the SQL as an intent anchor. Relevant records are retrieved to help interpret a new request.</p>
+            <p>As an illustration, “first purchase” can hide a choice. Suppose a visitor bought something on a phone in the morning and on a laptop that evening. Both devices appear on the first purchase date. A clarification that specifies the earliest session tells the query to order by timestamp and return the phone. <a href="https://arxiv.org/html/2606.11424v1#A8">See the paper’s clarification examples in Appendix H</a>.</p>
             <p>For the example above, the user has already specified the state. SOMA-SQL can check the remaining assumption with <code>SELECT DISTINCT state_code FROM sales</code>. The sample records return <code>CA</code> and <code>NY</code>. Seeing the stored values explains the empty result and gives the agent an exact filter to use.</p>
             <figure class="paper-figure">
               <a href="../images/sql/soma-method.jpg" aria-label="Open the full-size SOMA-SQL method figure"><img src="../images/sql/soma-method.jpg" width="1024" height="751" loading="lazy" alt="SOMA-SQL builds clarification examples from earlier queries, compares multiple candidate queries, probes the database, and repairs a candidate using the evidence."></a>
@@ -117,7 +117,7 @@ ORDER BY city</code></pre>
               <a href="../images/sql/soma-sql-leaderboard.jpg" aria-label="Open the full-size leaderboard"><img src="../images/sql/soma-sql-leaderboard.jpg" width="1150" height="597" loading="lazy" alt="Oracle’s screenshot shows SOMA-SQL ranked first on Spider 2.0 Lite with a score of 72.02."></a>
               <figcaption>Spider 2.0 Lite leaderboard, April 2026. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Original screenshot</a>.</figcaption>
             </figure>
-            <p>What can repair do when every starting query is wrong? In a separate Gemma-4-31B experiment, there were 268 questions with no correct answer among ten candidates. Probing and repair recovered 82 of them (30.6%). <a href="https://arxiv.org/html/2606.11424v1#S4.T5">See the repair experiment in Table 5</a>.</p>
+            <p>In a separate Gemma-4-31B experiment, 268 questions had no correct execution across ten independent runs before probing. Probing and repair then recovered 82 of these cases (30.6%). <a href="https://arxiv.org/html/2606.11424v1#S4.T5">See the repair experiment in Table 5</a>.</p>
             <p><a href="https://arxiv.org/html/2606.11424v1#A13">Worked SQL repair →</a></p>
           </section>
         </div>

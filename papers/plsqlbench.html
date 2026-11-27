@@ -29,7 +29,7 @@
       <header class="page-heading">
         <p class="eyebrow">EMNLP 2026 · Industry Track</p>
         <h1>PLSQLBench</h1>
-        <p class="sql-intro">We built PLSQLBench to measure whether a language model can write and revise a working database program. We released 2,391 development examples with executable tests, so researchers can run a model’s PL/SQL and check what it actually does.</p>
+        <p class="sql-intro">We built PLSQLBench to evaluate language models on generating, modifying, debugging, and repairing executable PL/SQL programs. The benchmark covers read-only programs in single-turn and multi-turn settings. We released 2,391 development instances with executable tests.</p>
         <nav class="research-nav" aria-label="Benchmark resources">
           <a href="https://aclanthology.org/2026.emnlp-industry.155/">Paper</a>
           <a href="https://github.com/oracle-samples/plsqlbench/tree/main/datasets">Dataset</a>
@@ -70,12 +70,12 @@
 
       <section class="section-block" id="product-report">
         <h2>What does one multi-turn task look like?</h2>
-        <p>A shop asks for its best-selling products, then limits the report to February, then asks it to flag low stock. On the third turn, the same procedure has to satisfy all three requests.</p>
+        <p>A shop asks for its best-selling products, then limits the report to February, then asks it to flag low stock. This illustrates the multi-turn subset, where a model revises an earlier program using the accumulated conversation context.</p>
         <figure>
           <img src="../images/sql/plsqlbench-report.jpg" width="1536" height="1024" loading="lazy" alt="Three report sheets show a sales ranking, a calendar date range, and a low-stock warning, each with a test checkmark.">
           <figcaption>The product-report example comes from <a href="https://arxiv.org/html/2608.15931v1#S0.F1">Figure 1 in the paper</a>.</figcaption>
         </figure>
-        <p>Suppose the shop sold 30 notebooks in January and 12 mugs in February. Only two mugs remain, and the low-stock threshold is five. The expected February result is <strong>Mugs · 12 sold · Low stock</strong>.</p>
+        <p>For a fictional illustration, suppose the shop sold 30 notebooks in January and 12 mugs in February. Only two mugs remain, and the low-stock threshold is five. The expected February result is <strong>Mugs · 12 sold · Low stock</strong>.</p>
         <p>If notebooks win, the revision lost the date filter. If mugs win without a warning, it missed the stock check. Both procedures could compile. Running them against known sales and inventory records reveals which requirement failed.</p>
         <nav class="research-nav" aria-label="UC San Diego talk resources">
           <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=49">Slides</a>
