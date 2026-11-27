@@ -8,8 +8,9 @@
     <title>OraPlan-SQL | Sai Ashish Somayajula</title>
     <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../stylesheet.css">
+    <link rel="stylesheet" href="project.css">
   </head>
-  <body>
+  <body class="publication-site archer">
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="../index.html">Sai Ashish Somayajula</a>
@@ -24,61 +25,95 @@
       </div>
     </header>
 
-    <main class="content-shell sql-paper">
-      <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
-      <header class="page-heading">
-        <p class="eyebrow">OraPlan-SQL</p>
-        <h1>How a single assumption changes a SQL query</h1>
-        <p class="sql-intro">A model can write valid SQL and still answer the wrong question. OraPlan-SQL first writes down what the question asks it to compute. The laptop example from my UC San Diego talk shows why that extra step matters.</p>
-        <nav class="research-nav" aria-label="UC San Diego talk resources">
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=22">See the example in the slides</a>
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1065">Watch the talk at 17:45</a>
+    <main class="project" id="main">
+      <a class="back-link" href="../research.html#sql-publications">← SQL publications</a>
+      <header class="project-heading">
+        <p class="venue">IJCKG 2025 <span aria-hidden="true">·</span> Proceedings published in 2026</p>
+        <h1><span class="project-name">OraPlan-SQL</span><span class="project-title">A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</span></h1>
+        <p class="authors"><a href="https://mariannemliu.github.io/">Marianne Menglin Liu</a><sup>*</sup>, <strong><a href="../index.html">Sai Ashish Somayajula</a></strong><sup>*</sup>, <a href="https://blogs.oracle.com/authors/syed-fahad-allam-shah/">Syed Fahad Allam Shah</a>, <a href="https://blogs.oracle.com/authors/sujithravi/">Sujith Ravi</a>, <a href="https://www.cis.upenn.edu/~danroth/">Dan Roth</a></p>
+        <p class="affiliation">Oracle AI <span aria-hidden="true">·</span> * Equal contribution</p>
+        <nav class="project-resources" aria-label="Publication resources">
+          <a class="primary-resource" href="https://doi.org/10.1007/978-981-95-5009-8_39">Paper</a>
+          <a href="https://arxiv.org/pdf/2510.23870">PDF</a>
+          <a href="https://blogs.oracle.com/cloud-infrastructure/oracle-wins-archer-nl2sql-challenge">Oracle article</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=22">UCSD slides</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1065">Talk video</a>
         </nav>
       </header>
 
-      <section class="section-block">
-        <h2>Which laptop has the largest screen?</h2>
-        <blockquote>“If all Dell laptops are lightweight, which lightweight laptop made in China has the largest screen?”</blockquote>
-        <p>A tempting first step is to filter the catalog to Dell laptops. That would drop every other brand before we even compare screens. The word “if” changes one fact about the catalog. Every Dell now qualifies as lightweight, and laptops that were already lightweight still qualify.</p>
-        <table>
-          <caption>Illustrative laptop records from the talk</caption>
-          <thead><tr><th scope="col">Laptop</th><th scope="col">Originally lightweight?</th><th scope="col">Eligible after the assumption?</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Dell A</th><td>No</td><td>Yes</td></tr>
-            <tr><th scope="row">Brand B</th><td>Yes</td><td>Yes</td></tr>
-            <tr><th scope="row">Brand C</th><td>No</td><td>No</td></tr>
-          </tbody>
-        </table>
-        <p>Now apply the rest of the question. Both Dell A and Brand B were made in China. Dell A has a 14-inch screen and Brand B has a 16-inch screen. <strong>Brand B wins.</strong> Filtering to Dell at the outset would have produced a plausible 14-inch answer.</p>
-      </section>
+      <figure class="example-plate" id="example" aria-labelledby="example-heading">
+        <div class="example-spread">
+          <div class="example-question">
+            <p class="figure-label">A question from Archer</p>
+            <h2 id="example-heading">What if the Somerset Park singers also played Balmoor?</h2>
+            <p>Which stadiums would then have at least three times as many distinct singers as Glebe Park? Try the premise on these three fictional lineups.</p>
+          </div>
+          <fieldset class="experiment">
+            <legend>Singer appearances</legend>
+            <input class="choice choice-first" type="radio" name="scenario" id="first" checked>
+            <label for="first">Recorded shows</label>
+            <input class="choice choice-second" type="radio" name="scenario" id="second">
+            <label for="second">Apply the premise</label>
+            <div class="snapshot snapshot-1">
+              <p class="output-title">Distinct singers by stadium</p>
+              <ul class="plot-rows" aria-label="Recorded shows">
+                <li><div class="plot-label"><span>Somerset Park</span><span>Ada, Bo <b>· 2</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
+                <li><div class="plot-label"><span>Balmoor</span><span>Bo, Cy <b>· 2</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
+                <li><div class="plot-label"><span>Glebe Park</span><span>Ada <b>· 1</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 33%"></i></span></li>
+              </ul>
+              <p class="plot-finding">Glebe Park has one singer. No stadium reaches the threshold of three.</p>
+            </div>
+            <div class="snapshot snapshot-2">
+              <p class="output-title">Distinct singers by stadium</p>
+              <ul class="plot-rows" aria-label="With the premise">
+                <li><div class="plot-label"><span>Somerset Park</span><span>Ada, Bo <b>· 2</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
+                <li><div class="plot-label"><span>Balmoor</span><span>Ada, Bo, Cy <b>· 3</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 100%"></i></span></li>
+                <li><div class="plot-label"><span>Glebe Park</span><span>Ada <b>· 1</b></span></div><span class="track" aria-hidden="true"><i style="--extent: 33%"></i></span></li>
+              </ul>
+              <p class="plot-finding">Balmoor qualifies. Ada joins its lineup, and Bo still counts only once.</p>
+            </div>
+          </fieldset>
+        </div>
+        <figcaption>Illustrative lineups for the bilingual stadium question in Figure 1 of the paper.</figcaption>
+      </figure>
 
-      <section class="section-block">
-        <h2>How the planner learns from that mistake</h2>
-        <p>During development, we ran generated queries and inspected cases where the result was wrong. The laptop failure points to a rule that carries over to other hypothetical questions. First state what the assumption changes. Then apply the original filters and ranking to that revised set.</p>
-        <p>For a new question, the planner spells out those steps in plain language. The SQL agent uses that plan, the database schema, and examples to write a query. Several plans can produce different queries, so we run them and compare their answers. In the lecture example, two queries return Brand B and one returns Dell A. Brand B receives two votes even if the two queries are written differently.</p>
-      </section>
-
-      <section class="section-block">
-        <h2>Did planning improve the answers?</h2>
-        <p>On Archer’s English development questions, removing the planner lowered execution accuracy from 72.12% to 64.42%. Execution accuracy measures whether a query returns the expected answer. On the separate 2025 challenge test set, OraPlan-SQL placed first in both languages, scoring 54.96% in English and 56.67% in Chinese.</p>
-        <figure>
-          <a href="../images/sql/oraplan-archer-leaderboard.jpg" aria-label="Open the full-size Archer leaderboard figure"><img src="../images/sql/oraplan-archer-leaderboard.jpg" width="2000" height="800" loading="lazy" alt="OraPlan-SQL leads the English and Chinese results on the 2025 Archer NL2SQL leaderboard."></a>
-          <figcaption>The 2025 Archer Challenge test results. <a href="https://blogs.oracle.com/cloud-infrastructure/oracle-wins-archer-nl2sql-challenge">Figure 2 in Oracle’s announcement</a>.</figcaption>
-        </figure>
-      </section>
-
-      <section class="section-block sql-citation">
-        <h2>Publication</h2>
-        <p class="sql-paper-title">OraPlan-SQL: A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</p>
-        <p class="authors">Marianne Menglin Liu<sup>*</sup>, <strong>Sai Ashish Somayajula</strong><sup>*</sup>, Syed Fahad Allam Shah, Sujith Ravi, Dan Roth</p>
-        <p class="sql-credit">* Equal contribution</p>
-        <p><em>IJCKG 2025 · Proceedings published in 2026, pp. 537–544</em></p>
-        <nav class="research-nav" aria-label="Paper resources">
-          <a href="https://doi.org/10.1007/978-981-95-5009-8_39">Read the paper</a>
-          <a href="https://arxiv.org/pdf/2510.23870">PDF</a>
-          <a href="https://sig4kg.github.io/archer-bench/">Archer Challenge</a>
+      <div class="article-body">
+        <nav class="contents" aria-label="Project sections">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
         </nav>
-      </section>
+        <div class="article-copy">
+          <section id="overview">
+            <h2>Overview</h2>
+            <p class="overview-text">A hypothetical can change which records belong in a calculation. OraPlan-SQL makes that change explicit in a plan, then uses the plan to write and run SQL. We developed it for reasoning questions asked in English and Chinese.</p>
+          </section>
+          <section id="method">
+            <h2>How the planner handles the premise</h2>
+            <p>A direct translation can count Balmoor’s existing singers and overlook the word “also.” The planner first says what changes in the imagined world. It adds Somerset Park’s singers to Balmoor’s lineup, removes duplicate singer–stadium pairs, and only then compares each venue with Glebe Park.</p>
+            <p>A Chinese question adds another decision. The venue name in the question has to match an English value in the database. A one-letter error is enough to lose the row. In another example from the paper, a translation produces “John Nisinik” while the table contains “John Nizinik.” Giving the planner the original wording and candidate database values lets it check the match before the SQL agent writes its filter.</p>
+            <p>During development, we turned recurring errors into instructions for the planner. For a new question, the system tries several plans and votes on the results returned by their SQL. Different queries can agree on the same venues. In the paper’s full example, the selected answer contains Stark’s Park, Somerset Park, and Balmoor.</p>
+            <figure class="paper-figure">
+              <a href="../images/sql/oraplan-method.jpg" aria-label="Open the full-size OraPlan-SQL method figure"><img src="../images/sql/oraplan-method.jpg" width="1818" height="795" loading="lazy" alt="The planner matches bilingual venue names and refines its instructions. The SQL agent writes multiple queries and compares their returned venues."></a>
+              <figcaption>The stadium question passes from the planner to the SQL agent. <a href="https://blogs.oracle.com/cloud-infrastructure/oracle-wins-archer-nl2sql-challenge">Figure 1 in Oracle’s article</a>.</figcaption>
+            </figure>
+          </section>
+          <section id="results">
+            <h2>Bilingual results on Archer</h2>
+            <p>OraPlan-SQL placed first on the 2025 Archer Challenge. Execution accuracy measures how often a generated query returns the expected result. The English and Chinese scores below are from the held-out challenge test set.</p>
+            <dl class="metrics">
+              <div><dt>English</dt><dd>54.96%</dd></div>
+              <div><dt>Chinese</dt><dd>56.67%</dd></div>
+            </dl>
+            <figure class="paper-figure">
+              <a href="../images/sql/oraplan-archer-leaderboard.jpg" aria-label="Open the full-size leaderboard"><img src="../images/sql/oraplan-archer-leaderboard.jpg" width="2000" height="800" loading="lazy" alt="OraPlan-SQL leads the English and Chinese entries on the 2025 Archer NL2SQL leaderboard."></a>
+              <figcaption>Archer NL2SQL leaderboard, October 2025. <a href="https://blogs.oracle.com/cloud-infrastructure/oracle-wins-archer-nl2sql-challenge">Original figure</a>.</figcaption>
+            </figure>
+            <p>On the separate English development set, the full system scored 72.12%. Removing the planner reduced that to 64.42%. <a href="https://arxiv.org/html/2510.23870v1#S3.T2">See the planner comparison in Table 2</a>.</p>
+            <p><a href="https://sig4kg.github.io/archer-bench/">Archer benchmark →</a></p>
+          </section>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">

@@ -1,0 +1,450 @@
+/* Academic project pages for the two NL-to-SQL papers. */
+.publication-site {
+  --paper: #fffcf8;
+  --text: #202824;
+  --secondary: #52615a;
+  --rule: #d5dbd2;
+  --deep: #183b32;
+  --accent-ink: #155745;
+  --tint: #e0ede4;
+  --highlight: #bce398;
+  --sans: 'Lato', Verdana, sans-serif;
+  background: var(--paper);
+  color: var(--text);
+}
+
+.publication-site.soma {
+  --paper: #fbfcff;
+  --text: #242734;
+  --secondary: #535d70;
+  --rule: #d7dce5;
+  --deep: #283550;
+  --accent-ink: #344e87;
+  --tint: #e9eef9;
+  --highlight: #b6ccff;
+}
+
+.publication-site .site-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.publication-site .brand,
+.publication-site .site-nav a {
+  color: var(--text);
+}
+
+.publication-site .site-nav a:is(:hover, :focus-visible, .is-active) {
+  background: var(--tint);
+  color: var(--accent-ink);
+}
+
+.project {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 24px 0 70px;
+}
+
+.project a {
+  color: var(--accent-ink);
+  text-underline-offset: 3px;
+}
+
+.project a:hover,
+.project a:focus-visible {
+  text-decoration: underline;
+}
+
+.project a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.project .back-link,
+.project figcaption,
+.project figcaption a,
+.project .affiliation,
+.project .contents a {
+  font-size: 14px;
+}
+
+.project-heading {
+  margin: 16px auto 38px;
+  max-width: 960px;
+  text-align: center;
+}
+
+.project-heading .venue {
+  margin: 0 0 10px;
+  color: var(--accent-ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.venue span,
+.affiliation span {
+  margin: 0 5px;
+}
+
+.project-heading h1 {
+  margin: 0;
+  font-family: var(--sans);
+}
+
+.project-name {
+  display: block;
+  font-size: clamp(44px, 6.4vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.project-title {
+  display: block;
+  max-width: 37em;
+  margin: 13px auto 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(21px, 2.8vw, 33px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.project .authors {
+  max-width: 850px;
+  margin: 19px auto 3px;
+  color: var(--text);
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.project .authors a,
+.project .authors strong {
+  font-size: 16px;
+}
+
+.project .authors a {
+  color: #155e96;
+  white-space: nowrap;
+}
+
+.project .authors sup {
+  font-size: 10px;
+}
+
+.project .affiliation {
+  color: var(--secondary);
+  margin: 4px 0 15px;
+}
+
+.project-resources {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-resources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 4px 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.project-resources .primary-resource {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: white;
+}
+
+.project figure {
+  margin: 0;
+}
+
+.example-spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--deep);
+  border: 1px solid var(--deep);
+  border-radius: 12px;
+}
+
+.example-question {
+  padding: clamp(24px, 3.8vw, 46px);
+  color: white;
+}
+
+.example-question .figure-label {
+  color: var(--highlight);
+  margin: 0 0 14px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.example-question h2 {
+  color: inherit;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.example-question p:last-child {
+  color: #f0f2ef;
+  margin: 15px 0 0;
+  max-width: 39ch;
+  line-height: 1.5;
+}
+
+.experiment {
+  position: relative;
+  min-width: 0;
+  padding: 32px clamp(20px, 3vw, 36px) 27px;
+  margin: 0;
+  border: 0;
+  background: var(--tint);
+}
+
+.experiment legend,
+.choice {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.experiment label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: var(--accent-ink);
+  border: 1px solid var(--accent-ink);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.choice:checked + label {
+  background: var(--deep);
+  color: white;
+}
+
+.choice:focus-visible + label {
+  outline: 3px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+.snapshot {
+  display: none;
+  margin-top: 17px;
+}
+
+.choice-first:checked ~ .snapshot-1,
+.choice-second:checked ~ .snapshot-2 {
+  display: block;
+}
+
+.output-title {
+  margin: 0 0 9px;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.plot-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: 111px;
+}
+
+.plot-rows li + li {
+  margin-top: 7px;
+}
+
+.plot-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+
+.plot-label span:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  display: block;
+  height: 4px;
+  background: rgba(30, 50, 50, 0.11);
+}
+
+.track i {
+  display: block;
+  width: var(--extent);
+  height: 100%;
+  background: var(--accent-ink);
+}
+
+.plot-finding {
+  margin: 14px 0 0;
+  border-top: 1px solid rgba(30, 50, 50, 0.22);
+  padding-top: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.project figcaption {
+  color: var(--secondary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.article-body {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 745px);
+  gap: clamp(24px, 6vw, 75px);
+  margin-top: 46px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  align-items: flex-start;
+  position: sticky;
+  top: 24px;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 2px solid var(--rule);
+}
+
+.project .contents a {
+  font-weight: 700;
+}
+
+.article-copy section {
+  scroll-margin-top: 20px;
+}
+
+.article-copy section + section {
+  border-top: 1px solid var(--rule);
+  padding-top: 27px;
+  margin-top: 30px;
+}
+
+.article-copy h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(25px, 3.3vw, 35px);
+  line-height: 1.2;
+}
+
+.article-copy p {
+  max-width: 76ch;
+  margin: 13px 0;
+}
+
+.article-copy .overview-text {
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.article-copy p a,
+.project figcaption a {
+  text-decoration: underline;
+}
+
+.article-copy .paper-figure {
+  margin: 20px 0;
+}
+
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px clamp(32px, 6vw, 70px);
+  border-left: 3px solid var(--accent-ink);
+  padding-left: 18px;
+  margin: 20px 0;
+}
+
+.metrics dt {
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.metrics dd {
+  margin: 0;
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  .project {
+    width: min(620px, calc(100% - 32px));
+    padding-top: 15px;
+  }
+
+  .project-heading {
+    margin-top: 19px;
+    margin-bottom: 26px;
+  }
+
+  .example-spread,
+  .article-body {
+    display: block;
+  }
+
+  .example-question,
+  .experiment {
+    padding: 23px;
+  }
+
+  .article-body {
+    margin-top: 26px;
+  }
+
+  .contents {
+    position: static;
+    flex-direction: row;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 20px;
+    padding: 0 0 12px;
+    margin-bottom: 20px;
+  }
+}
+
+@media print {
+  .site-header, .site-footer, .project .back-link, .project-resources, .contents {
+    display: none;
+  }
+  .article-body {
+    display: block;
+  }
+  .project {
+    width: 100%;
+  }
+}

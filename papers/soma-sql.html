@@ -8,8 +8,9 @@
     <title>SOMA-SQL | Sai Ashish Somayajula</title>
     <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../stylesheet.css">
+    <link rel="stylesheet" href="project.css">
   </head>
-  <body>
+  <body class="publication-site soma">
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="../index.html">Sai Ashish Somayajula</a>
@@ -24,63 +25,95 @@
       </div>
     </header>
 
-    <main class="content-shell sql-paper">
-      <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
-      <header class="page-heading">
-        <p class="eyebrow">SOMA-SQL</p>
-        <h1>How can a database answer an ambiguous question?</h1>
-        <p class="sql-intro">If someone asks for their top-performing regions, an analyst might start by asking what counts as performance. SOMA-SQL looks for evidence of how that question has been answered before, then checks the details it can verify in the database.</p>
-        <nav class="research-nav" aria-label="UC San Diego talk resources">
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=32">See the example in the slides</a>
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1514">Watch the talk at 25:14</a>
+    <main class="project" id="main">
+      <a class="back-link" href="../research.html#sql-publications">← SQL publications</a>
+      <header class="project-heading">
+        <p class="venue">arXiv preprint <span aria-hidden="true">·</span> June 2026</p>
+        <h1><span class="project-name">SOMA-SQL</span><span class="project-title">Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</span></h1>
+        <p class="authors"><strong><a href="../index.html">Sai Ashish Somayajula</a></strong><sup>*</sup>, <a href="https://mariannemliu.github.io/">Marianne Menglin Liu</a><sup>*</sup>, <a href="https://blogs.oracle.com/authors/chuanlei/">Chuan Lei</a>, <a href="https://aclanthology.org/people/fjona-parllaku/">Fjona Parllaku</a>, <a href="https://aclanthology.org/people/daniel-garcia/">Daniel Garcia</a>, <a href="https://aclanthology.org/people/rongguang-wang/">Rongguang Wang</a>, <a href="https://blogs.oracle.com/authors/syed-fahad-allam-shah/">Syed Fahad Allam Shah</a>, <a href="https://blogs.oracle.com/authors/ankanbansal/">Ankan Bansal</a>, <a href="https://aclanthology.org/people/sujeeth-bharadwaj/">Sujeeth Bharadwaj</a>, <a href="https://blogs.oracle.com/authors/taotsheng/">Tao Sheng</a>, <a href="https://blogs.oracle.com/authors/sujithravi/">Sujith Ravi</a>, <a href="https://www.cis.upenn.edu/~danroth/">Dan Roth</a></p>
+        <p class="affiliation">Oracle AI <span aria-hidden="true">·</span> * Equal contribution</p>
+        <nav class="project-resources" aria-label="Publication resources">
+          <a class="primary-resource" href="https://arxiv.org/abs/2606.11424">Paper</a>
+          <a href="https://arxiv.org/pdf/2606.11424">PDF</a>
+          <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle article</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=32">UCSD slides</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1514">Talk video</a>
         </nav>
       </header>
 
-      <section class="section-block">
-        <h2>What does “top-performing” mean?</h2>
-        <blockquote>“Top-performing regions in New York last quarter”</blockquote>
-        <p>Consider the request from my UC San Diego talk. A region with a few large deals might lead on revenue, while another with many small deals leads on deal count. Two queries could both run successfully and return different winners. Even after choosing a metric, “New York” and “last quarter” need an interpretation.</p>
-        <table>
-          <caption>What an earlier query tells us in the lecture example</caption>
-          <thead><tr><th scope="col">Words in the request</th><th scope="col">Evidence in the earlier SQL</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Top-performing</th><td>It summed revenue to rank the regions.</td></tr>
-            <tr><th scope="row">New York</th><td>It filtered customers by state.</td></tr>
-            <tr><th scope="row">Last quarter</th><td>It used the fiscal calendar.</td></tr>
-          </tbody>
-        </table>
-        <p>We use earlier SQL to build examples for future questions. Starting with a query whose meaning is explicit, we generate a shorter question that leaves some of those choices open. When candidate queries disagree on revenue, profit, or deal count, the original query tells us which choice was intended. We save that clarification with the question and its database context. A new request can reuse it when the context fits.</p>
-      </section>
+      <figure class="example-plate" id="example" aria-labelledby="example-heading">
+        <div class="example-spread">
+          <div class="example-question">
+            <p class="figure-label">A question from the paper</p>
+            <h2 id="example-heading">Which regions in New York performed best last quarter?</h2>
+            <p>Suppose “best” means revenue and the business uses fiscal quarters. One choice is still open. Change the meaning of New York and see which region leads.</p>
+          </div>
+          <fieldset class="experiment">
+            <legend>Interpret “New York” as</legend>
+            <input class="choice choice-first" type="radio" name="scenario" id="first" checked>
+            <label for="first">New York City</label>
+            <input class="choice choice-second" type="radio" name="scenario" id="second">
+            <label for="second">New York State</label>
+            <div class="snapshot snapshot-1">
+              <p class="output-title">Revenue in the fiscal quarter</p>
+              <ul class="plot-rows" aria-label="City">
+                <li><div class="plot-label"><span>Manhattan</span><span>$80k</span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
+                <li><div class="plot-label"><span>Brooklyn</span><span>$55k</span></div><span class="track" aria-hidden="true"><i style="--extent: 46%"></i></span></li>
+              </ul>
+              <p class="plot-finding">Manhattan leads among the two city regions.</p>
+            </div>
+            <div class="snapshot snapshot-2">
+              <p class="output-title">Revenue in the fiscal quarter</p>
+              <ul class="plot-rows" aria-label="State">
+                <li><div class="plot-label"><span>Albany</span><span>$120k</span></div><span class="track" aria-hidden="true"><i style="--extent: 100%"></i></span></li>
+                <li><div class="plot-label"><span>Manhattan</span><span>$80k</span></div><span class="track" aria-hidden="true"><i style="--extent: 67%"></i></span></li>
+                <li><div class="plot-label"><span>Brooklyn</span><span>$55k</span></div><span class="track" aria-hidden="true"><i style="--extent: 46%"></i></span></li>
+              </ul>
+              <p class="plot-finding">Including Albany changes the winner, even though the revenue calculation is identical.</p>
+            </div>
+          </fieldset>
+        </div>
+        <figcaption>Fictional sales totals illustrate the city-versus-state ambiguity in the paper.</figcaption>
+      </figure>
 
-      <section class="section-block">
-        <h2>How does the database store New York?</h2>
-        <p>Suppose we’ve established that the user means New York State. One candidate filters the state column to <code>'New York'</code> and another uses <code>'NY'</code>. We can settle this disagreement by asking the database which values actually occur in that column.</p>
-        <pre><code>SELECT DISTINCT state_code
-FROM customers</code></pre>
-        <p>The teaching database returns <code>CA</code>, <code>NY</code>, and <code>TX</code>. The agent can now repair the filter to <code>state_code = 'NY'</code>. The earlier query supplied the business meaning. This small check supplied the spelling the database uses. <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=2013">Watch the probe at 33:33</a>.</p>
-      </section>
-
-      <section class="section-block">
-        <h2>How often did the final query return the right answer?</h2>
-        <p>In April 2026, SOMA-SQL ranked first on Spider 2.0 Lite with 72.02% execution accuracy. We also tested how much the final database checks helped in a separate experiment with Gemma-4-31B. Given the same starting queries and synthetic logs, voting scored 41.1%, selecting a query with a model scored 46.1%, and adding database checks and repairs raised the score to 61.0%. <a href="https://arxiv.org/html/2606.11424v1#S4.T4">Table 4 in the paper</a>.</p>
-        <figure>
-          <a href="../images/sql/soma-sql-leaderboard.jpg" aria-label="Open the full-size SOMA-SQL leaderboard screenshot"><img src="../images/sql/soma-sql-leaderboard.jpg" width="1150" height="597" loading="lazy" alt="Spider 2.0 Lite leaderboard showing SOMA-SQL in first place with 72.02% execution accuracy in April 2026."></a>
-          <figcaption>SOMA-SQL’s first-place entry on Spider 2.0 Lite. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Figure 1 in Oracle’s April 2026 announcement</a>.</figcaption>
-        </figure>
-      </section>
-
-      <section class="section-block sql-citation">
-        <h2>Publication</h2>
-        <p class="sql-paper-title">SOMA-SQL: Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</p>
-        <p class="authors"><strong>Sai Ashish Somayajula</strong><sup>*</sup>, Marianne Menglin Liu<sup>*</sup>, Chuan Lei, Fjona Parllaku, Daniel Garcia, Rongguang Wang, Syed Fahad Allam Shah, Ankan Bansal, Sujeeth Bharadwaj, Tao Sheng, Sujith Ravi, Dan Roth</p>
-        <p class="sql-credit">* Equal contribution</p>
-        <p><em>arXiv preprint, June 2026</em></p>
-        <nav class="research-nav" aria-label="Paper resources">
-          <a href="https://arxiv.org/abs/2606.11424">Read the paper</a>
-          <a href="https://arxiv.org/pdf/2606.11424">PDF</a>
-          <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle research blog</a>
+      <div class="article-body">
+        <nav class="contents" aria-label="Project sections">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
         </nav>
-      </section>
+        <div class="article-copy">
+          <section id="overview">
+            <h2>Overview</h2>
+            <p class="overview-text">A question can have several plausible SQL answers. SOMA-SQL compares their assumptions, retrieves relevant decisions from earlier queries, and runs small database checks to decide which parts of a candidate query to revise.</p>
+          </section>
+          <section id="method">
+            <h2>Where the evidence comes from</h2>
+            <p>First we look for choices that change the SQL. One candidate interprets New York as a city, another as a state. A third might count deals instead of summing revenue. Comparing the candidates exposes disagreements that a syntax check would miss.</p>
+            <p>An earlier query can preserve a business decision even if its original question is gone. If it sums revenue by state for a fiscal quarter, we know how that particular request was interpreted. We generate a shorter question that omits those details, then save the choices it leaves open and the answers supported by the earlier SQL. A later query can retrieve that example when its context fits.</p>
+            <p>Even “first purchase” can hide a choice. Suppose a visitor bought something on a phone in the morning and on a laptop that evening. Both devices appear on the first purchase date. A clarification that specifies the earliest session tells the query to order by timestamp and return the phone. <a href="https://arxiv.org/html/2606.11424v1#A8">Examples of clarification questions in Appendix H</a>.</p>
+            <p>Some choices can be checked directly. If two queries agree on New York State but disagree about its spelling, a small query can inspect the values in the state column. That check can repair a filter such as <code>'New York'</code> to <code>'NY'</code>. Deciding whether the user meant the state in the first place requires different evidence.</p>
+            <figure class="paper-figure">
+              <a href="../images/sql/soma-method.jpg" aria-label="Open the full-size SOMA-SQL method figure"><img src="../images/sql/soma-method.jpg" width="1024" height="751" loading="lazy" alt="SOMA-SQL builds clarification examples from earlier queries, compares multiple candidate queries, probes the database, and repairs a candidate using the evidence."></a>
+              <figcaption>How a stored clarification and a live database check reach the final query. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Figure 2 in Oracle’s article</a>.</figcaption>
+            </figure>
+          </section>
+          <section id="results">
+            <h2>Execution accuracy on Spider 2.0 Lite</h2>
+            <p>SOMA-SQL ranked first on Spider 2.0 Lite in April 2026. The leaderboard evaluates the answer returned by the selected SQL query.</p>
+            <dl class="metrics">
+              <div><dt>Execution accuracy</dt><dd>72.02%</dd></div>
+              <div><dt>April 2026 ranking</dt><dd>#1</dd></div>
+            </dl>
+            <figure class="paper-figure">
+              <a href="../images/sql/soma-sql-leaderboard.jpg" aria-label="Open the full-size leaderboard"><img src="../images/sql/soma-sql-leaderboard.jpg" width="1150" height="597" loading="lazy" alt="Oracle’s screenshot shows SOMA-SQL ranked first on Spider 2.0 Lite with a score of 72.02."></a>
+              <figcaption>Spider 2.0 Lite leaderboard, April 2026. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Original screenshot</a>.</figcaption>
+            </figure>
+            <p>What can repair do when every starting query is wrong? In a separate Gemma-4-31B experiment, there were 268 questions with no correct answer among ten candidates. Probing and repair recovered 82 of them (30.6%). <a href="https://arxiv.org/html/2606.11424v1#S4.T5">See the repair experiment in Table 5</a>.</p>
+            <p><a href="https://arxiv.org/html/2606.11424v1#A13">Worked SQL repair →</a></p>
+          </section>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
