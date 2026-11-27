@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Sai Ashish Somayajula">
-    <meta name="description" content="PLSQLBench tests whether language models can write and revise working PL/SQL programs. It runs generated code against database tests, including conversations where each revision must preserve earlier requirements.">
+    <meta name="description" content="Explore the PLSQLBench dataset, its 2,391 public development examples, and the official leaderboard for executable PL/SQL generation and repair.">
     <title>PLSQLBench | Sai Ashish Somayajula</title>
     <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../stylesheet.css">
@@ -27,45 +27,60 @@
     <main class="content-shell sql-paper">
       <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
       <header class="page-heading">
-        <p class="eyebrow">PLSQLBench</p>
-        <h1>Can a model revise a database program without breaking it?</h1>
-        <p class="sql-intro">A SQL query can answer a question once. A PL/SQL procedure can package that query with rules about what to do next, so an application can call it again. PLSQLBench tests what happens when a user asks a model to change those rules over several turns.</p>
-        <nav class="research-nav" aria-label="UC San Diego talk resources">
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=49">See the example in the slides</a>
-          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=2175">Watch the talk at 36:15</a>
+        <p class="eyebrow">EMNLP 2026 · Industry Track</p>
+        <h1>PLSQLBench</h1>
+        <p class="sql-intro">We built PLSQLBench to measure whether a language model can write and revise a working database program. We released 2,391 development examples with executable tests, so researchers can run a model’s PL/SQL and check what it actually does.</p>
+        <nav class="research-nav" aria-label="Benchmark resources">
+          <a href="https://github.com/oracle-samples/plsqlbench/tree/main/datasets">Browse the dataset</a>
+          <a href="https://plsqlbench.github.io/#leaderboard">Official leaderboard</a>
+          <a href="https://aclanthology.org/2026.emnlp-industry.155/">Read the paper</a>
         </nav>
       </header>
 
-      <section class="section-block" id="product-report">
-        <h2>A best-seller report that keeps changing</h2>
-        <p>In my UC San Diego talk, the example is a procedure that reports the best-selling products. The user starts with a simple ranking and adds requirements as the conversation progresses.</p>
-        <figure>
-          <img src="../images/sql/plsqlbench-report.jpg" width="1536" height="1024" alt="Three illustrated report sheets show a sales ranking, a calendar date range, and a low-stock warning. Each revision carries a test checkmark.">
-          <figcaption>Three revisions to the same report. <a href="https://arxiv.org/html/2608.15931v1#S0.F1">Figure 1 in the paper</a> shows the request and test for each turn.</figcaption>
-        </figure>
-        <table>
-          <caption>Three requests for the same product report</caption>
-          <thead><tr><th scope="col">Request</th><th scope="col">What a working revision must do</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Rank products by sales.</th><td>Return the requested number of best sellers in sales order.</td></tr>
-            <tr><th scope="row">Let me choose a date range.</th><td>Rank products using sales within that period. A sale outside it should have no effect.</td></tr>
-            <tr><th scope="row">Flag low stock.</th><td>Add the inventory warning and keep the date filter and sales ranking working.</td></tr>
-          </tbody>
-        </table>
-        <p>Imagine last year’s best seller sold nothing this month. If it appears at the top of this month’s report after the stock warning is added, the latest revision has broken the date filter. The procedure might still compile and display a warning. Running it on a case like this exposes the error.</p>
-      </section>
-
       <section class="section-block" id="benchmark-testing">
-        <h2>Testing the behavior after each request</h2>
-        <p>PLSQLBench compiles and executes the generated programs against database tests. A multi-turn conversation asks whether the model can carry earlier requirements forward as it revises the same program. Across the benchmark, errors included references to the wrong schema objects, mishandled exceptions, and revisions that lost earlier behavior.</p>
+        <h2>What’s in the dataset?</h2>
+        <p>The full benchmark covers both one-off programming tasks and conversations in which a user asks for changes to an earlier program. Its database tasks draw on 54 databases. It also includes standalone programming problems that can be solved without a database table.</p>
         <figure class="benchmark-size">
           <dl>
             <div><dt>Total benchmark instances</dt><dd>2,865</dd></div>
             <div><dt>Single-turn tasks</dt><dd>2,594</dd></div>
             <div><dt>Multi-turn conversations</dt><dd>271</dd></div>
           </dl>
-          <figcaption>The conversations span 978 turns. <a href="https://aclanthology.org/2026.emnlp-industry.155/">Dataset description in the paper</a>.</figcaption>
+          <figcaption>The 271 conversations span 978 turns. Each conversation counts as one benchmark instance.</figcaption>
         </figure>
+        <p>The public release includes the four development sets below, their tests, and schema files for the database tasks. The remaining 474 instances form the private test sets.</p>
+        <table>
+          <caption>Public development data</caption>
+          <thead><tr><th scope="col">Data file</th><th scope="col">Examples</th><th scope="col">What it tests</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="https://github.com/oracle-samples/plsqlbench/blob/main/datasets/spider2_st/spider2_st.jsonl">Spider2-ST</a></th><td>407 tasks</td><td>Write or repair PL/SQL for complex database schemas.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/oracle-samples/plsqlbench/blob/main/datasets/spider2_mt/spider2_mt.jsonl">Spider2-MT</a></th><td>208 conversations</td><td>Extend, debug, or repair a program over successive requests.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/oracle-samples/plsqlbench/blob/main/datasets/spider/spider1.jsonl">Spider-PLSQL</a></th><td>970 tasks</td><td>Answer questions over Spider databases using PL/SQL.</td></tr>
+            <tr><th scope="row"><a href="https://github.com/oracle-samples/plsqlbench/blob/main/datasets/mbpp/mbpp_plsql.jsonl">MBPP-PLSQL</a></th><td>806 tasks</td><td>Implement standalone functions and procedures.</td></tr>
+          </tbody>
+        </table>
+        <p><a href="https://github.com/oracle-samples/plsqlbench/archive/refs/heads/main.zip">Download the public release with schemas and metadata (ZIP)</a></p>
+      </section>
+
+      <section class="section-block" id="leaderboard">
+        <h2>How to read the leaderboard</h2>
+        <p>The leaderboard compares models on the same tasks using <strong>Mean Test Pass@1</strong>. Each model gets one attempt. A program that passes three of four tests earns 75% for that task, and the leaderboard averages those fractions. A program that fails to compile passes zero tests.</p>
+        <p>Choose <strong>Spider2-MT</strong> to compare how models handle follow-up requests, or <strong>Spider2-ST</strong> to see how they perform on a single request. <a href="https://plsqlbench.github.io/#leaderboard">Compare models on the official leaderboard →</a></p>
+      </section>
+
+      <section class="section-block" id="product-report">
+        <h2>What does one multi-turn task look like?</h2>
+        <p>A shop asks for its best-selling products, then limits the report to February, then asks it to flag low stock. On the third turn, the same procedure has to satisfy all three requests.</p>
+        <figure>
+          <img src="../images/sql/plsqlbench-report.jpg" width="1536" height="1024" loading="lazy" alt="Three report sheets show a sales ranking, a calendar date range, and a low-stock warning, each with a test checkmark.">
+          <figcaption>The product-report example comes from <a href="https://arxiv.org/html/2608.15931v1#S0.F1">Figure 1 in the paper</a>.</figcaption>
+        </figure>
+        <p>Suppose the shop sold 30 notebooks in January and 12 mugs in February. Only two mugs remain, and the low-stock threshold is five. The expected February result is <strong>Mugs · 12 sold · Low stock</strong>.</p>
+        <p>If notebooks win, the revision lost the date filter. If mugs win without a warning, it missed the stock check. Both procedures could compile. Running them against known sales and inventory records reveals which requirement failed.</p>
+        <nav class="research-nav" aria-label="UC San Diego talk resources">
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=49">Slides for this example</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=2175">Watch the UCSD talk at 36:15</a>
+        </nav>
       </section>
 
       <section class="section-block sql-citation">
@@ -77,8 +92,7 @@
         <nav class="research-nav" aria-label="Paper resources">
           <a href="https://aclanthology.org/2026.emnlp-industry.155/">Read the paper</a>
           <a href="https://aclanthology.org/2026.emnlp-industry.155.pdf">PDF</a>
-          <a href="https://plsqlbench.github.io/">Benchmark and leaderboard</a>
-          <a href="https://github.com/oracle-samples/plsqlbench">Code</a>
+          <a href="https://github.com/oracle-samples/plsqlbench">Release documentation</a>
         </nav>
       </section>
     </main>
