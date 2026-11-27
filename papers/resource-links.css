@@ -1,0 +1,22 @@
+/* Keep resource icons compact on the older project pages, including phones. */
+.nav.nav-pills[aria-label="Publication resources"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav.nav-pills[aria-label="Publication resources"] > li {
+  display: block;
+  float: none;
+  flex: 0 0 84px;
+  width: auto;
+}
+
+.nav.nav-pills[aria-label="Publication resources"] > li > a {
+  padding: 10px;
+}
+
+.nav[aria-label="Publication resources"] img {
+  max-width: 60px;
+  object-fit: contain;
+}
