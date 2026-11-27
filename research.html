@@ -24,88 +24,60 @@
     </header>
 
     <main class="content-shell">
-      <section class="page-heading">
+      <section class="page-heading research-intro">
         <p class="eyebrow">Research</p>
-        <h1>Research</h1>
-        <p>
-          I study how language models adapt to limited data and changing environments, and how their outputs can be attributed. My work spans <strong>synthetic data generation</strong>, <strong>continual learning</strong>, <strong>parameter-efficient adaptation</strong>, and <strong>watermarking</strong>, with applications in healthcare and biology.
-        </p>
-        <details class="background-details">
-          <summary>PhD background and research motivation</summary>
-          <p>I hold a PhD from the ECE department at <a href="https://ucsd.edu">University of California, San Diego</a>, where I was advised by <a href="https://pengtaoxie.github.io">Professor Pengtao Xie</a> and received the 2025-2026 <strong><a href="https://ece.ucsd.edu/awards/student/2025-2026-ece-awards">Dr. William S.C. Chang Best Dissertation Award</a></strong>. My thesis investigated how to adapt large language models to specialized, high-stakes domains where data is scarce, distributions shift over time, and output attribution is critical. Working across healthcare and biology, I developed techniques spanning synthetic data generation, continual learning, and watermarking, with the long-term goal of models that domain experts can rely on to reason over complex domain specific data.</p>
-        <p>
-          The COVID-19 pandemic profoundly impacted me, inspiring my research journey. I realized that an efficiently trained language model for COVID-19 could rapidly analyze data and offer valuable insights for vaccine development. Motivated by this idea, my research focuses on optimizing language models for specialized domains such as healthcare. My long term vision is to leverage these models for scientific discoveries.
-        </p>
-        <p>
-          Under this bigger umbrella, I developed methods in <strong>synthetic data generation with meta-learning based feedback mechanisms</strong>, <strong>continual learning in dynamic environments</strong>, and the <strong>security/safety of large language models</strong>. My PhD thesis is available here: <a href="https://escholarship.org/content/qt60j170sg/qt60j170sg.pdf" target="_blank" rel="noopener">[PDF]</a>.
-        </p>
-        </details>
+        <h1>From domain knowledge to data-driven discovery</h1>
+        <p class="research-lead">My long-term vision is to build <strong>data agents that help people turn complex data into reliable insights and scientific discoveries</strong>. This connects my PhD work on adapting language models for healthcare with my enterprise AI research at Oracle: giving models the domain knowledge, data access, and reasoning abilities needed to support expert inquiry.</p>
+        <nav class="research-nav" aria-label="Research page sections">
+          <a href="#motivation">COVID-19 motivation</a>
+          <a href="#phd">PhD foundations</a>
+          <a href="#data-agents">Data agents at Oracle</a>
+          <a href="#publications">Selected publications</a>
+        </nav>
       </section>
 
-      <section class="section-block">
-        <h2>Watermarking in LLMs</h2>
-        <p>
-          With the proliferation of LLMs in generating synthetic datasets, distinguishing between human-curated and machine-generated texts is crucial to avoid misinformation. This distinction is particularly vital in specialized domains such as healthcare, where the authenticity and reliability of data are of utmost importance.
-        </p>
-
-        <article class="paper-entry">
-          <div class="paper-media">
-            <img src="images/wateramark.png" alt="Token-specific watermarking overview">
-          </div>
-          <div class="paper-copy">
-            <a class="papertitle" href="Watermark/index.html">Token-Specific Watermarking with Enhanced Detectability and Semantic Coherence for Large Language Models</a>
-            <p class="authors"><a href="https://mignonjia.github.io">Mingjia Huo*</a>, <strong>Sai Ashish Somayajula*</strong>, <a href="https://youweiliang.github.io">Youwei Liang</a>, <a href="https://ruisizhang.com">Ruisi Zhang</a>, <a href="https://farinaz.eng.ucsd.edu">Farinaz Koushanfar</a>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
-            <p><em>International Conference on Machine Learning (ICML), 2024</em></p>
-            <p class="publication-links"><a href="https://arxiv.org/pdf/2402.18059.pdf" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/mignonjia/TS_watermark" target="_blank" rel="noopener">code</a></p>
-            <p>A multi-objective optimization-based token-specific watermarking method to study and improve both watermark detectability and generation quality.</p>
-          </div>
-        </article>
+      <section class="section-block research-story" id="motivation">
+        <p class="eyebrow">The motivation</p>
+        <h2>Helping researchers make sense of emerging evidence</h2>
+        <p>The COVID-19 pandemic shaped the question that has guided my research: how can AI help experts extract useful knowledge when evidence is growing quickly and the need for answers is urgent? I became interested in language models that could help researchers analyze biomedical literature and data, connect findings, and inform new lines of investigation.</p>
+        <p>Healthcare made the challenges concrete. Useful models must learn from scarce labeled data, adapt as knowledge changes, and make it possible to trace generated content. These questions became the foundation of my PhD.</p>
       </section>
 
-      <section class="section-block">
-        <h2>Continual Learning of Language Models</h2>
-        <p>
-          In dynamic and evolving data environments, language models must adapt to new data without losing accuracy on prior data. We explore how to efficiently select a sub-network that can be fine-tuned on new data while retaining prior knowledge.
-        </p>
-
-        <article class="paper-entry">
-          <div class="paper-media">
-            <img src="images/CN2.png" alt="Continual finetuning method overview">
-          </div>
-          <div class="paper-copy">
-            <a class="papertitle" href="Child-tuning/index.html">Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts</a>
-            <p class="authors"><strong>Sai Ashish Somayajula</strong>, <a href="https://youweiliang.github.io">Youwei Liang</a>, <a href="https://scholar.google.com/citations?hl=en&amp;user=RRzZk4YAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Li Zhang</a>, <a href="https://scholar.google.com/citations?hl=en&amp;user=SatULfoAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Abhishek Singh</a>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
-            <p><em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em></p>
-            <p class="publication-links"><a href="https://arxiv.org/pdf/2403.12918" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/Sai-Ashish/Attention_guided_weight_mixup_BLO" target="_blank" rel="noopener">code</a></p>
-            <p>A bi-level optimization-based approach to finetune an automatically chosen sub-network within pre-trained language models on low-resource datasets to mitigate overfitting and reduce standard deviation.</p>
-          </div>
-        </article>
+      <section class="section-block research-story" id="phd">
+        <p class="eyebrow">PhD · UC San Diego</p>
+        <h2>Building language models for specialized domains</h2>
+        <p>Working with <a href="https://pengtaoxie.github.io">Prof. Pengtao Xie</a> at <a href="https://ucsd.edu">UC San Diego</a>, I studied how to adapt pre-trained language models to healthcare and biology through synthetic data generation, continual learning, efficient fine-tuning, and watermarking. My research addressed three connected needs:</p>
+        <ul class="research-themes">
+          <li><strong>Learn from limited evidence.</strong> Use feedback from downstream tasks to improve synthetic training data, including for Long COVID text classification.</li>
+          <li><strong>Adapt efficiently and reliably.</strong> Develop optimization methods for stable fine-tuning on low-resource texts and learn how much adaptation capacity a task needs.</li>
+          <li><strong>Support attribution.</strong> Design text watermarks that balance detection of model-generated content with generation quality.</li>
+        </ul>
+        <p>My dissertation, <a href="https://escholarship.org/content/qt60j170sg/qt60j170sg.pdf">Trustworthy Optimization of Pre-Trained Models for Healthcare: Generalizability, Adaptability, and Security</a>, received the 2025–2026 <a href="https://ece.ucsd.edu/awards/student/2025-2026-ece-awards">Dr. William S.C. Chang Best Dissertation Award</a>. <a href="#publications">Explore the publications below →</a></p>
       </section>
 
-      <section class="section-block">
-        <h2>Parameter Efficient Fine-tuning Methods</h2>
-        <p>
-          With the scaling of model parameters, fine-tuning becomes highly expensive in computation. PEFT methods become invaluable in such situations, and we explored whether the optimal LoRA rank can be learned for each downstream task.
-        </p>
-
-        <article class="paper-entry">
-          <div class="paper-media">
-            <img src="images/Autolora.png" alt="AutoLoRA method overview">
-          </div>
-          <div class="paper-copy">
-            <a class="papertitle" href="https://ruz048.github.io/autolora-website/" target="_blank" rel="noopener">AutoLoRA: Automatically Tuning Matrix Ranks in Low-Rank Adaptation Based on Meta Learning</a>
-            <p class="authors"><a href="https://scholar.google.com/citations?hl=en&amp;user=D7EXgU0AAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Ruiyi Zhang</a>, <a href="https://tongclass.ac.cn/author/rushi-qiang/">Rushi Qiang</a>, <strong>Sai Ashish Somayajula</strong>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
-            <p><em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em></p>
-            <p class="publication-links"><a href="https://arxiv.org/pdf/2403.09113" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/ruz048/AutoLoRA" target="_blank" rel="noopener">code</a></p>
-            <p>AutoLoRA is a meta-learning framework designed to automatically determine the optimal rank for each low-rank adaptation matrix.</p>
-          </div>
-        </article>
+      <section class="section-block research-story" id="data-agents">
+        <p class="eyebrow">Enterprise AI · Oracle</p>
+        <h2>From adapted models to agents that investigate data</h2>
+        <p>This work led me to a broader systems question: how can a language model use domain knowledge to investigate data and produce an answer supported by evidence? Adapting the model is one part of that goal. An agent also needs to understand what the data means, retrieve the right information, and check its reasoning against the underlying data.</p>
+        <p>At Oracle, I pursued this direction in an enterprise setting, working with product and engineering teams on <strong>data agents for analytics and insight generation</strong>. Enterprise data brings many of the same challenges that motivate scientific data analysis: specialized terminology, ambiguous questions, complex relationships, and a need for dependable answers.</p>
+        <h3>Grounding questions in domain meaning</h3>
+        <p>My work includes an ontology-driven semantic store that connects entities, metrics, relationships, and domain rules to enterprise data. This gives an agent context for interpreting a question and translating the user’s intent into an analysis.</p>
+        <h3>Turning intent into evidence through NL2SQL</h3>
+        <p>Reliable data access is a foundation for insight. I co-led <strong>OraPlan-SQL</strong>, winner of the <a href="https://sig4kg.github.io/archer-bench/">2025 Archer NL2SQL Challenge</a>, and <strong>SOMA-SQL</strong>, which <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">reached #1 on Spider 2.0 Lite in April 2026</a>. These efforts address how agents interpret questions, plan queries, and use execution feedback to resolve ambiguity in enterprise data.</p>
+        <h3>Toward insights and discovery</h3>
+        <p>The larger goal is an agent that can follow a question through an investigation: gather evidence, examine patterns, test possible explanations, and help a person decide what to explore next. My enterprise work develops foundations for that vision. Bringing such capabilities to scientific data remains the long-term motivation that connects this work to the healthcare questions that first drew me to research.</p>
       </section>
 
-      <section class="section-block">
-        <h2>Synthetic Data Generation</h2>
+      <section class="section-block research-story" id="publications">
+        <p class="eyebrow">Methods behind the vision</p>
+        <h2>Selected PhD publications</h2>
+        <p>These papers develop the data generation, adaptation, and attribution methods behind my work on specialized language models, beginning with the healthcare application that motivated it.</p>
+      </section>
+
+      <section class="section-block research-publications">
+        <h3>Learning from scarce data</h3>
         <p>
-          In specialized domains, labeled training data is often limited, especially in cases involving emergent diseases where timely and extensive data collection poses significant challenges. I explored whether downstream model feedback can improve generated data and whether gradients of unseen tokens can be synthesized in a task-driven optimization.
+          The Long COVID study connects my original motivation to a concrete task: classifying biomedical text with limited labels. Related work uses downstream feedback to improve text augmentation and task-dependent structure to synthesize gradients for unseen lexical information.
         </p>
 
         <article class="paper-entry">
@@ -143,6 +115,66 @@
             <p><em>Transactions of the Association for Computational Linguistics (TACL), 2022</em></p>
             <p class="publication-links"><a href="https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00464/2006965/tacl_a_00464.pdf" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/Sai-Ashish/End-to-End-Text-Augmentation" target="_blank" rel="noopener">code</a> / <a href="https://underline.io/events/325/sessions/11394/lecture/54127-a-multi-level-optimization-framework-for-end-to-end-text-augmentation" target="_blank" rel="noopener">video</a></p>
             <p>A data reweighting based domain adaptive feedback mechanism for end-to-end learning of text augmentation and classification models.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block research-publications">
+        <h3>Stable adaptation to specialized domains</h3>
+        <p>
+          As domain needs evolve, adaptation must work with limited data and remain stable across training runs. This work studies how to select and fine-tune a sub-network within a pre-trained language model to improve generalization on low-resource texts.
+        </p>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img src="images/CN2.png" alt="Continual finetuning method overview">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="Child-tuning/index.html">Generalizable and Stable Finetuning of Pretrained Language Models on Low-Resource Texts</a>
+            <p class="authors"><strong>Sai Ashish Somayajula</strong>, <a href="https://youweiliang.github.io">Youwei Liang</a>, <a href="https://scholar.google.com/citations?hl=en&amp;user=RRzZk4YAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Li Zhang</a>, <a href="https://scholar.google.com/citations?hl=en&amp;user=SatULfoAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Abhishek Singh</a>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
+            <p><em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em></p>
+            <p class="publication-links"><a href="https://arxiv.org/pdf/2403.12918" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/Sai-Ashish/Attention_guided_weight_mixup_BLO" target="_blank" rel="noopener">code</a></p>
+            <p>A bi-level optimization-based approach to finetune an automatically chosen sub-network within pre-trained language models on low-resource datasets to mitigate overfitting and reduce standard deviation.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block research-publications">
+        <h3>Making adaptation more efficient</h3>
+        <p>
+          Adapting large models also requires controlling computational cost. AutoLoRA uses meta-learning to choose the rank of each low-rank adaptation matrix, tailoring adaptation capacity to the downstream task.
+        </p>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img src="images/Autolora.png" alt="AutoLoRA method overview">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="https://ruz048.github.io/autolora-website/" target="_blank" rel="noopener">AutoLoRA: Automatically Tuning Matrix Ranks in Low-Rank Adaptation Based on Meta Learning</a>
+            <p class="authors"><a href="https://scholar.google.com/citations?hl=en&amp;user=D7EXgU0AAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Ruiyi Zhang</a>, <a href="https://tongclass.ac.cn/author/rushi-qiang/">Rushi Qiang</a>, <strong>Sai Ashish Somayajula</strong>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
+            <p><em>Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024</em></p>
+            <p class="publication-links"><a href="https://arxiv.org/pdf/2403.09113" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/ruz048/AutoLoRA" target="_blank" rel="noopener">code</a></p>
+            <p>AutoLoRA is a meta-learning framework designed to automatically determine the optimal rank for each low-rank adaptation matrix.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block research-publications">
+        <h3>Tracing model-generated text</h3>
+        <p>
+          As language models contribute more text to the information ecosystem, identifying model-generated content becomes part of understanding its provenance. Our watermarking work studies the tradeoff between detectability and semantic coherence.
+        </p>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img src="images/wateramark.png" alt="Token-specific watermarking overview">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="Watermark/index.html">Token-Specific Watermarking with Enhanced Detectability and Semantic Coherence for Large Language Models</a>
+            <p class="authors"><a href="https://mignonjia.github.io">Mingjia Huo*</a>, <strong>Sai Ashish Somayajula*</strong>, <a href="https://youweiliang.github.io">Youwei Liang</a>, <a href="https://ruisizhang.com">Ruisi Zhang</a>, <a href="https://farinaz.eng.ucsd.edu">Farinaz Koushanfar</a>, <a href="https://pengtaoxie.github.io">Pengtao Xie</a></p>
+            <p><em>International Conference on Machine Learning (ICML), 2024</em></p>
+            <p class="publication-links"><a href="https://arxiv.org/pdf/2402.18059.pdf" target="_blank" rel="noopener">pdf</a> / <a href="https://github.com/mignonjia/TS_watermark" target="_blank" rel="noopener">code</a></p>
+            <p>A multi-objective optimization-based token-specific watermarking method to study and improve both watermark detectability and generation quality.</p>
           </div>
         </article>
       </section>
