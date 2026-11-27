@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sai Ashish Somayajula">
+    <meta name="description" content="PLSQLBench tests whether language models can write and revise working PL/SQL programs. It runs generated code against database tests, including conversations where each revision must preserve earlier requirements.">
+    <title>PLSQLBench | Sai Ashish Somayajula</title>
+    <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../stylesheet.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="../index.html">Sai Ashish Somayajula</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="../index.html">Home</a>
+          <a href="../news.html">News</a>
+          <a class="is-active" aria-current="location" href="../research.html">Research</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../talks.html">Talks</a>
+          <a href="https://saiashish116.wixsite.com/website">My Writings</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content-shell sql-paper">
+      <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
+      <header class="page-heading">
+        <p class="eyebrow">EMNLP 2026 Industry Track, pp. 2625–2646</p>
+        <h1>PLSQLBench</h1>
+        <p class="sql-subtitle">Benchmarking LLM Systems for Executable Procedural Database Programming</p>
+        <p class="authors">Marianne Menglin Liu<sup>*</sup>, Leonid Boytsov<sup>*</sup>, Daniel W. Peterson, Pramuditha Perera, Rongguang Wang, <strong>Sai Ashish Somayajula</strong>, Syed Hamza Rafique, Rohit Saini, Shubham Pathak, Sujeeth Bharadwaj, Tao Sheng, Graham Horwood, Fahad Shah, Ankan Bansal, Sujith Ravi, Dan Roth</p>
+        <p class="sql-credit">* Equal contribution</p>
+        <nav class="research-nav" aria-label="Paper resources">
+          <a href="https://aclanthology.org/2026.emnlp-industry.155/">Read the paper</a>
+          <a href="https://aclanthology.org/2026.emnlp-industry.155.pdf">PDF</a>
+          <a href="https://plsqlbench.github.io/">Benchmark and leaderboard</a>
+          <a href="https://github.com/oracle-samples/plsqlbench">Code</a>
+        </nav>
+      </header>
+
+      <section class="section-block sql-study">
+        <div>
+          <h2>Can a model revise a working procedure?</h2>
+          <p>A user asks for a procedure that reports the best-selling products. Next they ask for a date filter, then a warning for low stock. The final procedure must still rank the products correctly while respecting the date range and handling inventory.</p>
+          <p>We built a benchmark that compiles and runs generated PL/SQL. Tests check the program’s behavior after each request, making it possible to see when a revision breaks an earlier requirement. The benchmark includes 2,594 single-turn tasks and 271 conversations spanning 978 turns.</p>
+          <h2>Results</h2>
+          <p>Across eight language models, common errors included referencing the wrong schema objects, mishandling exceptions, and losing earlier requirements during a revision. Giving models access to database tools improved performance on several tasks that required knowledge of the schema.</p>
+        </div>
+        <figure>
+          <img src="../images/sql/plsqlbench.png" width="800" height="480" alt="PLSQLBench comprises 2,594 single-turn tasks and 271 multi-turn conversations, for a total of 2,865 instances.">
+          <figcaption>Single-turn tasks and multi-turn conversations in the released benchmark. <a href="https://aclanthology.org/2026.emnlp-industry.155.pdf">Paper</a></figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>I dedicate the knowledge I gain for the betterment of this society. My gratitude to the higher power that guides me on the right path!</p>
+    </footer>
+  </body>
+</html>

@@ -52,7 +52,7 @@
           <li><strong>Adapt efficiently and reliably.</strong> Develop optimization methods for stable fine-tuning on low-resource texts and learn how much adaptation capacity a task needs.</li>
           <li><strong>Support attribution.</strong> Design text watermarks that balance detection of model-generated content with generation quality.</li>
         </ul>
-        <p>My dissertation, <a href="https://escholarship.org/content/qt60j170sg/qt60j170sg.pdf">Trustworthy Optimization of Pre-Trained Models for Healthcare: Generalizability, Adaptability, and Security</a>, received the 2025–2026 <a href="https://ece.ucsd.edu/awards/student/2025-2026-ece-awards">Dr. William S.C. Chang Best Dissertation Award</a>. <a href="#publications">Explore the publications below →</a></p>
+        <p>My dissertation, <a href="https://escholarship.org/content/qt60j170sg/qt60j170sg.pdf">Trustworthy Optimization of Pre-Trained Models for Healthcare: Generalizability, Adaptability, and Security</a>, received the 2025–2026 <a href="https://ece.ucsd.edu/awards/student/2025-2026-ece-awards">Dr. William S.C. Chang Best Dissertation Award</a>. <a href="#phd-publications">Explore the PhD publications →</a></p>
       </section>
 
       <section class="section-block research-story" id="data-agents">
@@ -62,7 +62,7 @@
         <h3>Grounding questions in domain meaning</h3>
         <p>My work includes an ontology-driven semantic store that connects entities, metrics, relationships, and domain rules to enterprise data. This gives an agent context for interpreting a question and translating the user’s intent into an analysis.</p>
         <h3>Turning intent into evidence through NL2SQL</h3>
-        <p>Reliable data access is a foundation for insight. I co-led <strong>OraPlan-SQL</strong>, winner of the <a href="https://sig4kg.github.io/archer-bench/">2025 Archer NL2SQL Challenge</a>, and <strong>SOMA-SQL</strong>, which <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">reached #1 on Spider 2.0 Lite in April 2026</a>. These efforts address how agents interpret questions, plan queries, and use execution feedback to resolve ambiguity in enterprise data.</p>
+        <p>Reliable data access is a foundation for insight. I co-led <a href="papers/oraplan-sql.html"><strong>OraPlan-SQL</strong></a>, winner of the <a href="https://sig4kg.github.io/archer-bench/">2025 Archer NL2SQL Challenge</a>, and <a href="papers/soma-sql.html"><strong>SOMA-SQL</strong></a>, which <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">reached #1 on Spider 2.0 Lite in April 2026</a>. These efforts address how agents interpret questions, plan queries, and use execution feedback to resolve ambiguity in enterprise data. I also contributed to <a href="papers/plsqlbench.html">PLSQLBench</a>, a benchmark for testing whether a model can write and revise executable database programs.</p>
         <h3>Toward insights and discovery</h3>
         <p>At Oracle, I also <strong>architected and led the development of an insights agent</strong> combining enterprise data, logs, documentation, and business context to identify anomalies and investigate root causes. I partnered with product and engineering teams to integrate it into support workflows, <strong>reducing root cause analysis from hours to just a few minutes</strong>.</p>
         <p>This work informs my interest in agents that can take an investigation further: examine patterns, test possible explanations, and suggest useful follow-up questions, with evidence people can inspect.</p>
@@ -70,11 +70,55 @@
 
       <section class="section-block research-story" id="publications">
         <p class="eyebrow">Publications</p>
-        <h2>Selected PhD publications</h2>
-        <p>Selected work on data generation, adaptation, and attribution for specialized language models.</p>
+        <h2>Selected publications</h2>
+        <p>My publications span database agents at Oracle and language models for specialized domains during my PhD.</p>
       </section>
 
-      <section class="section-block research-publications">
+      <section class="section-block research-publications" id="sql-publications">
+        <h3>Reasoning and programming with SQL</h3>
+        <p>How does an agent turn a question into a database query, and how can we tell whether its answer is correct? At Oracle, my collaborators and I studied how to plan a query, resolve ambiguous requests, and test whether a database program still works after a user changes the requirements.</p>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img class="sql-thumbnail" src="images/sql/oraplan-sql.png" width="800" height="480" loading="lazy" alt="English development set accuracy was 44.23% without planner guidelines, 64.42% without the planner, and 72.12% with the full system.">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="papers/oraplan-sql.html">OraPlan-SQL: A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</a>
+            <p class="authors">Marianne Menglin Liu, <strong>Sai Ashish Somayajula</strong>, Syed Fahad Allam Shah, Sujith Ravi, Dan Roth</p>
+            <p><em>IJCKG 2025 · Proceedings published in 2026, pp. 537–544</em></p>
+            <p>OraPlan-SQL breaks a question into a plan in plain language before writing SQL. Feedback from earlier reasoning errors helps the planner handle hypothetical and numerical questions in English and Chinese.</p>
+            <p class="publication-links"><a href="papers/oraplan-sql.html">Project page</a> / <a href="https://doi.org/10.1007/978-981-95-5009-8_39">Paper</a></p>
+          </div>
+        </article>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img class="sql-thumbnail" src="images/sql/soma-sql.png" width="800" height="480" loading="lazy" alt="On Spider 2.0 Lite, majority voting scored 41.1%, a model judge scored 46.1%, and judging plus probing scored 61.0% execution accuracy in the paper’s selection experiment.">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="papers/soma-sql.html">SOMA-SQL: Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</a>
+            <p class="authors"><strong>Sai Ashish Somayajula</strong>, Marianne Menglin Liu, Chuan Lei, Fjona Parllaku, Daniel Garcia, Rongguang Wang, Syed Fahad Allam Shah, Ankan Bansal, Sujeeth Bharadwaj, Tao Sheng, Sujith Ravi, Dan Roth</p>
+            <p><em>arXiv preprint, June 2026</em></p>
+            <p>SOMA-SQL uses synthetic query logs and targeted database queries to resolve ambiguity. It checks where candidate SQL queries disagree and uses the evidence to select or repair an answer.</p>
+            <p class="publication-links"><a href="papers/soma-sql.html">Project page</a> / <a href="https://arxiv.org/abs/2606.11424">Paper</a></p>
+          </div>
+        </article>
+
+        <article class="paper-entry">
+          <div class="paper-media">
+            <img class="sql-thumbnail" src="images/sql/plsqlbench.png" width="800" height="480" loading="lazy" alt="PLSQLBench comprises 2,594 single-turn tasks and 271 multi-turn conversations, for a total of 2,865 instances.">
+          </div>
+          <div class="paper-copy">
+            <a class="papertitle" href="papers/plsqlbench.html">PLSQLBench: Benchmarking LLM Systems for Executable Procedural Database Programming</a>
+            <p class="authors">Marianne Menglin Liu, Leonid Boytsov, Daniel W. Peterson, Pramuditha Perera, Rongguang Wang, <strong>Sai Ashish Somayajula</strong>, Syed Hamza Rafique, Rohit Saini, Shubham Pathak, Sujeeth Bharadwaj, Tao Sheng, Graham Horwood, Fahad Shah, Ankan Bansal, Sujith Ravi, Dan Roth</p>
+            <p><em>EMNLP 2026 Industry Track, pp. 2625–2646</em></p>
+            <p>PLSQLBench tests whether language models can write and revise working PL/SQL programs. It runs generated code against database tests, including conversations where each revision must preserve earlier requirements.</p>
+            <p class="publication-links"><a href="papers/plsqlbench.html">Project page</a> / <a href="https://aclanthology.org/2026.emnlp-industry.155/">Paper</a> / <a href="https://github.com/oracle-samples/plsqlbench">Code</a></p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block research-publications" id="phd-publications">
         <h3>Learning from scarce data</h3>
         <p>
           The Long COVID study explores biomedical text classification with limited labels. Related work uses downstream feedback to improve text augmentation and task-dependent structure to synthesize gradients for unseen lexical information.

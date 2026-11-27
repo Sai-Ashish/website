@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sai Ashish Somayajula">
+    <meta name="description" content="SOMA-SQL uses synthetic query logs and targeted database queries to resolve ambiguity. It checks where candidate SQL queries disagree and uses the evidence to select or repair an answer.">
+    <title>SOMA-SQL | Sai Ashish Somayajula</title>
+    <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../stylesheet.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="../index.html">Sai Ashish Somayajula</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="../index.html">Home</a>
+          <a href="../news.html">News</a>
+          <a class="is-active" aria-current="location" href="../research.html">Research</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../talks.html">Talks</a>
+          <a href="https://saiashish116.wixsite.com/website">My Writings</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content-shell sql-paper">
+      <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
+      <header class="page-heading">
+        <p class="eyebrow">arXiv preprint, June 2026</p>
+        <h1>SOMA-SQL</h1>
+        <p class="sql-subtitle">Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</p>
+        <p class="authors"><strong>Sai Ashish Somayajula</strong><sup>*</sup>, Marianne Menglin Liu<sup>*</sup>, Chuan Lei, Fjona Parllaku, Daniel Garcia, Rongguang Wang, Syed Fahad Allam Shah, Ankan Bansal, Sujeeth Bharadwaj, Tao Sheng, Sujith Ravi, Dan Roth</p>
+        <p class="sql-credit">* Equal contribution</p>
+        <nav class="research-nav" aria-label="Paper resources">
+          <a href="https://arxiv.org/abs/2606.11424">Read the paper</a>
+          <a href="https://arxiv.org/pdf/2606.11424">PDF</a>
+          <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle research blog</a>
+        </nav>
+      </header>
+
+      <section class="section-block sql-study">
+        <div>
+          <h2>When one question has several meanings</h2>
+          <p>An analyst asks which New York regions performed best last quarter. Ranking by revenue can produce a different answer from ranking by deals closed. Even after choosing a metric, the query has to use the right geographic unit and quarter.</p>
+          <p>We generate examples that record how earlier SQL resolved choices like these. For a new question, the agent retrieves relevant examples and generates candidate queries. If candidates disagree about how a value is stored, the agent can run a small query to check the database, then use the result to revise its SQL.</p>
+          <h2>Results</h2>
+          <p>In April 2026, SOMA-SQL ranked first on Spider 2.0 Lite with 72.02% execution accuracy. In a separate experiment using the same candidate queries, execution probes helped the agent repair answers that voting alone missed.</p>
+        </div>
+        <figure>
+          <img src="../images/sql/soma-sql.png" width="800" height="480" alt="On Spider 2.0 Lite, majority voting scored 41.1%, a model judge scored 46.1%, and judging plus probing scored 61.0% execution accuracy in the paper’s selection experiment.">
+          <figcaption>Selecting and repairing candidate queries on Spider 2.0 Lite using synthetic query logs. <a href="https://arxiv.org/html/2606.11424v1#S4.T4">Table 4</a></figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>I dedicate the knowledge I gain for the betterment of this society. My gratitude to the higher power that guides me on the right path!</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sai Ashish Somayajula">
+    <meta name="description" content="OraPlan-SQL breaks a question into a plan in plain language before writing SQL. Feedback from earlier reasoning errors helps the planner handle hypothetical and numerical questions in English and Chinese.">
+    <title>OraPlan-SQL | Sai Ashish Somayajula</title>
+    <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../stylesheet.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="../index.html">Sai Ashish Somayajula</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="../index.html">Home</a>
+          <a href="../news.html">News</a>
+          <a class="is-active" aria-current="location" href="../research.html">Research</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../talks.html">Talks</a>
+          <a href="https://saiashish116.wixsite.com/website">My Writings</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content-shell sql-paper">
+      <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
+      <header class="page-heading">
+        <p class="eyebrow">IJCKG 2025 · Proceedings published in 2026, pp. 537–544</p>
+        <h1>OraPlan-SQL</h1>
+        <p class="sql-subtitle">A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</p>
+        <p class="authors">Marianne Menglin Liu<sup>*</sup>, <strong>Sai Ashish Somayajula</strong><sup>*</sup>, Syed Fahad Allam Shah, Sujith Ravi, Dan Roth</p>
+        <p class="sql-credit">* Equal contribution</p>
+        <nav class="research-nav" aria-label="Paper resources">
+          <a href="https://doi.org/10.1007/978-981-95-5009-8_39">Read the paper</a>
+          <a href="https://arxiv.org/pdf/2510.23870">PDF</a>
+          <a href="https://sig4kg.github.io/archer-bench/">Archer Challenge</a>
+        </nav>
+      </header>
+
+      <section class="section-block sql-study">
+        <div>
+          <h2>Planning before writing SQL</h2>
+          <p>Suppose every laptop from one brand counted as lightweight. How many lightweight laptops would the store have? The plan must count every laptop from that brand, then add the lightweight models from other brands. That simple instruction helps avoid double-counting.</p>
+          <p>We grouped recurring reasoning errors and used them to refine the planner’s instructions. At inference time, the system generates several plans, turns each into SQL, runs the queries, and returns the result that appears most often.</p>
+          <h2>Results</h2>
+          <p>OraPlan-SQL took first place in the 2025 Archer Challenge. Its queries returned the correct result for 54.96% of English questions and 56.67% of Chinese questions on the held-out test set.</p>
+        </div>
+        <figure>
+          <img src="../images/sql/oraplan-sql.png" width="800" height="480" alt="English development set accuracy was 44.23% without planner guidelines, 64.42% without the planner, and 72.12% with the full system.">
+          <figcaption>Effect of planner components on Archer’s English development set. <a href="https://arxiv.org/html/2510.23870v1#S3.T2">Table 2</a></figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>I dedicate the knowledge I gain for the betterment of this society. My gratitude to the higher power that guides me on the right path!</p>
+    </footer>
+  </body>
+</html>
