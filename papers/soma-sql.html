@@ -27,32 +27,59 @@
     <main class="content-shell sql-paper">
       <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
       <header class="page-heading">
-        <p class="eyebrow">arXiv preprint, June 2026</p>
-        <h1>SOMA-SQL</h1>
-        <p class="sql-subtitle">Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</p>
+        <p class="eyebrow">SOMA-SQL</p>
+        <h1>How can a database answer an ambiguous question?</h1>
+        <p class="sql-intro">If someone asks for their top-performing regions, an analyst might start by asking what counts as performance. SOMA-SQL looks for evidence of how that question has been answered before, then checks the details it can verify in the database.</p>
+        <nav class="research-nav" aria-label="UC San Diego talk resources">
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=32">See the example in the slides</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1514">Watch the talk at 25:14</a>
+        </nav>
+      </header>
+
+      <section class="section-block">
+        <h2>What does “top-performing” mean?</h2>
+        <blockquote>“Top-performing regions in New York last quarter”</blockquote>
+        <p>Consider the request from my UC San Diego talk. A region with a few large deals might lead on revenue, while another with many small deals leads on deal count. Two queries could both run successfully and return different winners. Even after choosing a metric, “New York” and “last quarter” need an interpretation.</p>
+        <table>
+          <caption>What an earlier query tells us in the lecture example</caption>
+          <thead><tr><th scope="col">Words in the request</th><th scope="col">Evidence in the earlier SQL</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Top-performing</th><td>It summed revenue to rank the regions.</td></tr>
+            <tr><th scope="row">New York</th><td>It filtered customers by state.</td></tr>
+            <tr><th scope="row">Last quarter</th><td>It used the fiscal calendar.</td></tr>
+          </tbody>
+        </table>
+        <p>We use earlier SQL to build examples for future questions. Starting with a query whose meaning is explicit, we generate a shorter question that leaves some of those choices open. When candidate queries disagree on revenue, profit, or deal count, the original query tells us which choice was intended. We save that clarification with the question and its database context. A new request can reuse it when the context fits.</p>
+      </section>
+
+      <section class="section-block">
+        <h2>How does the database store New York?</h2>
+        <p>Suppose we’ve established that the user means New York State. One candidate filters the state column to <code>'New York'</code> and another uses <code>'NY'</code>. We can settle this disagreement by asking the database which values actually occur in that column.</p>
+        <pre><code>SELECT DISTINCT state_code
+FROM customers</code></pre>
+        <p>The teaching database returns <code>CA</code>, <code>NY</code>, and <code>TX</code>. The agent can now repair the filter to <code>state_code = 'NY'</code>. The earlier query supplied the business meaning. This small check supplied the spelling the database uses. <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=2013">Watch the probe at 33:33</a>.</p>
+      </section>
+
+      <section class="section-block">
+        <h2>How often did the final query return the right answer?</h2>
+        <p>In April 2026, SOMA-SQL ranked first on Spider 2.0 Lite with 72.02% execution accuracy. We also tested how much the final database checks helped in a separate experiment with Gemma-4-31B. Given the same starting queries and synthetic logs, voting scored 41.1%, selecting a query with a model scored 46.1%, and adding database checks and repairs raised the score to 61.0%. <a href="https://arxiv.org/html/2606.11424v1#S4.T4">Table 4 in the paper</a>.</p>
+        <figure>
+          <a href="../images/sql/soma-sql-leaderboard.jpg" aria-label="Open the full-size SOMA-SQL leaderboard screenshot"><img src="../images/sql/soma-sql-leaderboard.jpg" width="1150" height="597" loading="lazy" alt="Spider 2.0 Lite leaderboard showing SOMA-SQL in first place with 72.02% execution accuracy in April 2026."></a>
+          <figcaption>SOMA-SQL’s first-place entry on Spider 2.0 Lite. <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Figure 1 in Oracle’s April 2026 announcement</a>.</figcaption>
+        </figure>
+      </section>
+
+      <section class="section-block sql-citation">
+        <h2>Publication</h2>
+        <p class="sql-paper-title">SOMA-SQL: Resolving Multi-Source Ambiguity in NL-to-SQL via Synthetic Log and Execution Probing</p>
         <p class="authors"><strong>Sai Ashish Somayajula</strong><sup>*</sup>, Marianne Menglin Liu<sup>*</sup>, Chuan Lei, Fjona Parllaku, Daniel Garcia, Rongguang Wang, Syed Fahad Allam Shah, Ankan Bansal, Sujeeth Bharadwaj, Tao Sheng, Sujith Ravi, Dan Roth</p>
         <p class="sql-credit">* Equal contribution</p>
+        <p><em>arXiv preprint, June 2026</em></p>
         <nav class="research-nav" aria-label="Paper resources">
           <a href="https://arxiv.org/abs/2606.11424">Read the paper</a>
           <a href="https://arxiv.org/pdf/2606.11424">PDF</a>
           <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle research blog</a>
         </nav>
-      </header>
-
-      <section class="section-block sql-study">
-        <div>
-          <h2>When one question has several meanings</h2>
-          <p>An analyst asks which New York regions performed best last quarter. Ranking by revenue can produce a different answer from ranking by deals closed. Even after choosing a metric, the query has to use the right geographic unit and quarter.</p>
-          <p>We generate examples that record how earlier SQL resolved choices like these. For a new question, the agent retrieves relevant examples and generates candidate queries. If candidates disagree about how a value is stored, the agent can run a small query to check the database, then use the result to revise its SQL.</p>
-          <h2>Results</h2>
-          <p>In April 2026, SOMA-SQL ranked first on Spider 2.0 Lite with 72.02% execution accuracy. In a separate experiment using the same candidate queries, execution probes helped the agent repair answers that voting alone missed.</p>
-        </div>
-        <figure>
-          <a href="../images/sql/soma-sql-leaderboard.jpg" aria-label="View full-size SOMA-SQL leaderboard screenshot">
-            <img src="../images/sql/soma-sql-leaderboard.jpg" width="1150" height="597" alt="Spider 2.0 Lite leaderboard with Oracle’s SOMA-SQL highlighted in first place at 72.02% execution accuracy in April 2026.">
-          </a>
-          <figcaption>SOMA-SQL’s first-place entry on Spider 2.0 Lite. Figure 1 from the <a href="https://blogs.oracle.com/cloud-infrastructure/oci-gen-ai-tops-spider-2-lite">Oracle Cloud Infrastructure Blog, April 23, 2026</a>.</figcaption>
-        </figure>
       </section>
     </main>
 

@@ -27,30 +27,57 @@
     <main class="content-shell sql-paper">
       <a class="sql-back" href="../research.html#sql-publications">← SQL publications</a>
       <header class="page-heading">
-        <p class="eyebrow">IJCKG 2025 · Proceedings published in 2026, pp. 537–544</p>
-        <h1>OraPlan-SQL</h1>
-        <p class="sql-subtitle">A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</p>
+        <p class="eyebrow">OraPlan-SQL</p>
+        <h1>How a single assumption changes a SQL query</h1>
+        <p class="sql-intro">A model can write valid SQL and still answer the wrong question. OraPlan-SQL first writes down what the question asks it to compute. The laptop example from my UC San Diego talk shows why that extra step matters.</p>
+        <nav class="research-nav" aria-label="UC San Diego talk resources">
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.pdf#page=22">See the example in the slides</a>
+          <a href="../data/talks/grounded-enterprise-ai-ucsd.mp4#t=1065">Watch the talk at 17:45</a>
+        </nav>
+      </header>
+
+      <section class="section-block">
+        <h2>Which laptop has the largest screen?</h2>
+        <blockquote>“If all Dell laptops are lightweight, which lightweight laptop made in China has the largest screen?”</blockquote>
+        <p>A tempting first step is to filter the catalog to Dell laptops. That would drop every other brand before we even compare screens. The word “if” changes one fact about the catalog. Every Dell now qualifies as lightweight, and laptops that were already lightweight still qualify.</p>
+        <table>
+          <caption>Illustrative laptop records from the talk</caption>
+          <thead><tr><th scope="col">Laptop</th><th scope="col">Originally lightweight?</th><th scope="col">Eligible after the assumption?</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Dell A</th><td>No</td><td>Yes</td></tr>
+            <tr><th scope="row">Brand B</th><td>Yes</td><td>Yes</td></tr>
+            <tr><th scope="row">Brand C</th><td>No</td><td>No</td></tr>
+          </tbody>
+        </table>
+        <p>Now apply the rest of the question. Both Dell A and Brand B were made in China. Dell A has a 14-inch screen and Brand B has a 16-inch screen. <strong>Brand B wins.</strong> Filtering to Dell at the outset would have produced a plausible 14-inch answer.</p>
+      </section>
+
+      <section class="section-block">
+        <h2>How the planner learns from that mistake</h2>
+        <p>During development, we ran generated queries and inspected cases where the result was wrong. The laptop failure points to a rule that carries over to other hypothetical questions. First state what the assumption changes. Then apply the original filters and ranking to that revised set.</p>
+        <p>For a new question, the planner spells out those steps in plain language. The SQL agent uses that plan, the database schema, and examples to write a query. Several plans can produce different queries, so we run them and compare their answers. In the lecture example, two queries return Brand B and one returns Dell A. Brand B receives two votes even if the two queries are written differently.</p>
+      </section>
+
+      <section class="section-block">
+        <h2>Did planning improve the answers?</h2>
+        <p>On Archer’s English development questions, removing the planner lowered execution accuracy from 72.12% to 64.42%. Execution accuracy measures whether a query returns the expected answer. On the separate 2025 challenge test set, OraPlan-SQL placed first in both languages, scoring 54.96% in English and 56.67% in Chinese.</p>
+        <figure>
+          <a href="../images/sql/oraplan-archer-leaderboard.jpg" aria-label="Open the full-size Archer leaderboard figure"><img src="../images/sql/oraplan-archer-leaderboard.jpg" width="2000" height="800" loading="lazy" alt="OraPlan-SQL leads the English and Chinese results on the 2025 Archer NL2SQL leaderboard."></a>
+          <figcaption>The 2025 Archer Challenge test results. <a href="https://blogs.oracle.com/cloud-infrastructure/oracle-wins-archer-nl2sql-challenge">Figure 2 in Oracle’s announcement</a>.</figcaption>
+        </figure>
+      </section>
+
+      <section class="section-block sql-citation">
+        <h2>Publication</h2>
+        <p class="sql-paper-title">OraPlan-SQL: A Planning-Centric Framework for Complex Bilingual NL2SQL Reasoning</p>
         <p class="authors">Marianne Menglin Liu<sup>*</sup>, <strong>Sai Ashish Somayajula</strong><sup>*</sup>, Syed Fahad Allam Shah, Sujith Ravi, Dan Roth</p>
         <p class="sql-credit">* Equal contribution</p>
+        <p><em>IJCKG 2025 · Proceedings published in 2026, pp. 537–544</em></p>
         <nav class="research-nav" aria-label="Paper resources">
           <a href="https://doi.org/10.1007/978-981-95-5009-8_39">Read the paper</a>
           <a href="https://arxiv.org/pdf/2510.23870">PDF</a>
           <a href="https://sig4kg.github.io/archer-bench/">Archer Challenge</a>
         </nav>
-      </header>
-
-      <section class="section-block sql-study">
-        <div>
-          <h2>Planning before writing SQL</h2>
-          <p>Suppose every laptop from one brand counted as lightweight. How many lightweight laptops would the store have? The plan must count every laptop from that brand, then add the lightweight models from other brands. That simple instruction helps avoid double-counting.</p>
-          <p>We grouped recurring reasoning errors and used them to refine the planner’s instructions. At inference time, the system generates several plans, turns each into SQL, runs the queries, and returns the result that appears most often.</p>
-          <h2>Results</h2>
-          <p>OraPlan-SQL took first place in the 2025 Archer Challenge. Its queries returned the correct result for 54.96% of English questions and 56.67% of Chinese questions on the held-out test set.</p>
-        </div>
-        <figure>
-          <img src="../images/sql/oraplan-sql.png" width="800" height="480" alt="English development set accuracy was 44.23% without planner guidelines, 64.42% without the planner, and 72.12% with the full system.">
-          <figcaption>Effect of planner components on Archer’s English development set. <a href="https://arxiv.org/html/2510.23870v1#S3.T2">Table 2</a></figcaption>
-        </figure>
       </section>
     </main>
 
